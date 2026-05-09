@@ -865,10 +865,9 @@ background:#0d0d0d; /* already correct — if still red, add: */
 .sec-label::after{content:'';width:44px;height:1px;background:#b8d4be}
 
 /* ARENA */
-.arena{position:relative;background:#0d120f;border-radius:28px;margin-top:clamp(24px,4vw,40px);padding:clamp(28px,4vw,52px) clamp(16px,3.5vw,44px) clamp(22px,3vw,40px);overflow:hidden}
-.arena::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,92,58,.28),transparent 68%);top:-160px;left:-100px;pointer-events:none;z-index:0}
-.arena::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,92,58,.2),transparent 68%);bottom:-160px;right:-100px;pointer-events:none;z-index:0}
-
+.arena{position:relative;background:transparent;border-radius:0;margin-top:clamp(24px,4vw,40px);padding:clamp(28px,4vw,52px) clamp(16px,3.5vw,44px) clamp(22px,3vw,40px);overflow:hidden}
+.arena::before{display:none}
+.arena::after{display:none}
 /* DESKTOP GRID */
 .dsk{display:grid;grid-template-columns:1fr 56px 1fr;position:relative;z-index:2}
 
@@ -925,24 +924,12 @@ background:#0d0d0d; /* already correct — if still red, add: */
 .mcard p{font-size:clamp(.82rem,3.5vw,.92rem);color:rgba(255,255,255,.82);line-height:1.78;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 
 /* BOTTOM */
-.btm{position:relative;z-index:2;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:clamp(18px,2.8vw,32px);margin-top:28px}
-.btm h3{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:700;letter-spacing:-.04em;color:#fff;margin-bottom:10px;line-height:1.1}
-.btm p{font-size:clamp(.86rem,1.1vw,.96rem);color:rgba(255,255,255,.72);line-height:1.85}
+.btm{position:relative;z-index:2;background:#fff;border:1px solid #e0ddd8;border-radius:16px;padding:clamp(18px,2.8vw,32px);margin-top:28px}
+.btm h3{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:700;letter-spacing:-.04em;color:#111;margin-bottom:10px;line-height:1.1}
+.btm p{font-size:clamp(.86rem,1.1vw,.96rem);color:#666;line-height:1.85}
 
 @media(max-width:760px){.dsk{display:none}.mob{display:block}}
-/* CTA BANNER */
-.cta-banner{position:relative;overflow:hidden;border-radius:var(--radius-xl);padding:clamp(32px,5vw,64px);margin-block:clamp(40px,6vw,80px);display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px}
-.cta-banner img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(1.1)}
-.cta-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.7),rgba(0,0,0,.3))}
-.cta-inner{position:relative;z-index:2}
-.cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,4.5rem);line-height:.9;letter-spacing:-.04em;color:#fff;text-transform:uppercase;font-weight:900;max-width:14ch}
-.cta-inner h2 em{color:#7ec888;font-style:italic;font-weight:400}
-.cta-inner p{color:rgba(255,255,255,.85);margin-top:14px;max-width:50ch;font-size:clamp(.85rem,1.1vw,.96rem);line-height:1.8}
-.cta-btns-col{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px;flex-shrink:0}
-.btn-white{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1a1a1a;border-radius:999px;padding:.9rem 1.6rem;font-size:.82rem;font-weight:700;white-space:nowrap;transition:.2s ease}
-.btn-white:hover{background:#f0ede8}
-.btn-green{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;border-radius:999px;padding:.9rem 1.6rem;font-size:.82rem;font-weight:700;white-space:nowrap;transition:.2s ease}
-.btn-green:hover{background:#245030}
+
 
 /* ── CONTACT REDESIGN ── */
 .contact-new{
@@ -951,6 +938,7 @@ background:#0d0d0d; /* already correct — if still red, add: */
   overflow:hidden;
   background:#0d120f;
   border:1px solid rgba(126,200,136,.1);
+margin-top:clamp(16px,2vw,24px);
   margin-bottom:clamp(32px,5vw,64px);
 }
 .cn-top{
@@ -1822,21 +1810,64 @@ background:#0d0d0d; /* already correct — if still red, add: */
   </div>
 </section>
 
-<!-- ════════════════ CTA BANNER ════════════════ -->
-<div class="cta-banner">
-  <img class="bg" src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/bc26830452edfe304b6053addb559142636f46bd.jpg" alt="Grand evening event setup" width="1600" height="700" loading="lazy">
-  <div class="cta-inner">
-    <h2>Where Celebrations Turn into <em>Grand Memories</em></h2>
-    <p>Call at +91-9870269006 / +91-9999991447 to discuss your requirements. Book venue for your preferred dates early. We offer weddings, receptions, social gatherings, corporate functions, and private celebrations.</p>
+<!-- ══ GALLERY — 3D Panoramic Fan ══ -->
+<section class="gallery-sec" id="gallery">
+  <div class="page">
+
+    <!-- Header -->
+    <div class="glr-head">
+      <div class="glr-head-top">
+        <span class="glr-label">GALLERY</span>
+        <p class="glr-tagline">Step inside, and let the venue speak for itself</p>
+      </div>
+      <div class="glr-title-row">
+        <svg class="glr-icon" width="44" height="44" viewBox="0 0 64 64" fill="none">
+          <path d="M32 56V32" stroke="#2e5c3a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 32 C32 32 16 28 14 14 C22 14 30 20 32 32Z" fill="#2e5c3a" opacity=".85"/>
+          <path d="M32 32 C32 32 48 28 50 14 C42 14 34 20 32 32Z" fill="#2e5c3a" opacity=".65"/>
+          <path d="M32 26 C32 26 20 20 20 8 C28 8 32 18 32 26Z" fill="#4a8c5c" opacity=".7"/>
+        </svg>
+        <h2 class="glr-big-title">OF OUR VENUE</h2>
+      </div>
+    </div>
+
+    <!-- 3D Panoramic Stage -->
+    <div class="glr-stage">
+      <div class="glr-track">
+
+        <!-- Panel 1 — far left -->
+        <div class="glr-panel" style="--ry:-42deg; --tx:-24px; --scale:0.78; --z:-120px;">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx-search-images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg" alt="Venue 1" loading="lazy">
+        </div>
+
+        <!-- Panel 2 — near left -->
+        <div class="glr-panel" style="--ry:-22deg; --tx:-10px; --scale:0.90; --z:-50px;">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx-search-images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg" alt="Venue 2" loading="lazy">
+        </div>
+
+        <!-- Panel 3 — CENTER -->
+        <div class="glr-panel glr-center" style="--ry:0deg; --tx:0px; --scale:1; --z:0px;">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx-search-images/81f228e9334906d9fd2b861f33653d917097781e.jpg" alt="Venue 3" loading="lazy">
+        </div>
+
+        <!-- Panel 4 — near right -->
+        <div class="glr-panel" style="--ry:22deg; --tx:10px; --scale:0.90; --z:-50px;">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx-search-images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg" alt="Venue 4" loading="lazy">
+        </div>
+
+        <!-- Panel 5 — far right -->
+        <div class="glr-panel" style="--ry:42deg; --tx:24px; --scale:0.78; --z:-120px;">
+          <img src="https://pplx-res.cloudinary.com/image/upload/pplx-search-images/7fdc4911604eab50b3521ffa244c8559b3033d11.jpg" alt="Venue 5" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+
   </div>
-  <div class="cta-btns-col">
-    <a href="tel:+919870269006" class="btn-white">+91 9870269006</a>
-    <a href="tel:+919999991447" class="btn-green">+91 9999991447</a>
-  </div>
-</div>
+</section>
 
 <div class="contact-new">
-  <div class="cn-bg-num">LKO</div>
+  <div class="cn-bg-num">NMBPL</div>
 
   <div class="cn-top">
 
