@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lawn & Banquet – Where Celebrations Turn into Grand Memories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:#ebebeb;color:#1a1a1a;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+:root{
+  --bg:#ebebeb;--white:#ffffff;--black:#111111;
+  --green:#2e5c3a;--green-light:#4a8c5c;--green-pale:#d4e6d8;
+  --text:#1a1a1a;--muted:#666;--border:#d5d5d5;
+  --radius:14px;--radius-lg:22px;--radius-xl:32px;
+}
+
+/* PAGE WRAPPER */
+.page{width:min(100%,1320px);margin-inline:auto;padding-inline:clamp(18px,3vw,48px)}
+
+/* ═══════════════════════════════════════
+   HERO — BOTTOM ANCHORED
+═══════════════════════════════════════ */
+.hero{
+  position:relative;
+  width:100%;
+  height:100svh;
+  min-height:600px;
+  max-height:960px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+/* ── Background ── */
+.hero-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-bg img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+  display:block;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,0)   30%,
+      rgba(0,0,0,0)   45%,
+      rgba(0,0,0,.55) 70%,
+      rgba(0,0,0,.88) 100%
+    );
+}
+
+/* ── Top badge ── */
+.hero-top{
+  position:relative;z-index:2;
+  padding:clamp(20px,3vw,36px) clamp(20px,4vw,60px);
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:.45rem 1rem;
+  border-radius:999px;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.18);
+  font-size:.65rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.85);
+  font-weight:600;
+}
+.hero-badge-dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#7ec888;
+  box-shadow:0 0 8px rgba(126,200,136,.9);
+  flex-shrink:0;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 8px rgba(126,200,136,.9)}
+  50%{box-shadow:0 0 16px rgba(126,200,136,1),0 0 28px rgba(126,200,136,.4)}
+}
+
+/* ── Bottom content ── */
+.hero-bottom{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(20px,4vw,60px);
+  align-items:end;
+  padding:clamp(24px,4vw,52px) clamp(20px,4vw,60px);
+  padding-bottom:clamp(36px,5vw,64px);
+}
+
+/* Left — heading */
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,7vw,8.5rem);
+  font-weight:900;
+  letter-spacing:-.05em;
+  line-height:.85;
+  text-transform:uppercase;
+  color:#fff;
+  margin:0;
+}
+.hero-title em{
+  font-style:italic;
+  font-weight:400;
+  color:#7ec888;
+  display:block;
+}
+
+/* Right — tagline + CTAs */
+.hero-tag{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.1rem,2vw,1.8rem);
+  font-weight:400;
+  color:rgba(255,255,255,.9);
+  line-height:1.3;
+  margin-bottom:12px;
+}
+.hero-tag em{
+  font-style:italic;
+  color:#7ec888;
+}
+.hero-sub{
+  font-size:clamp(.8rem,1vw,.92rem);
+  color:rgba(255,255,255,.45);
+  line-height:1.8;
+  max-width:44ch;
+  margin-bottom:28px;
+}
+
+.hero-ctas{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.hero-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:.75rem 1.6rem;
+  border-radius:6px;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:.28s ease;
+  cursor:pointer;
+}
+.hero-btn-primary{
+  background:#7ec888;
+  color:#0d1a10;
+  border:2px solid #7ec888;
+}
+.hero-btn-primary:hover{
+  background:transparent;
+  color:#7ec888;
+}
+.hero-btn-outline{
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  border:2px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(8px);
+}
+.hero-btn-outline:hover{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.6);
+}
+
+/* ── Scroll indicator ── */
+.hero-scroll{
+  position:absolute;
+  bottom:clamp(20px,3vw,36px);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+}
+.hero-scroll-line{
+  width:1px;
+  height:48px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);
+  animation:scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine{
+  0%{transform:scaleY(0);transform-origin:top;opacity:1}
+  50%{transform:scaleY(1);transform-origin:top;opacity:1}
+  100%{transform:scaleY(1);transform-origin:bottom;opacity:0}
+}
+.hero-scroll span{
+  font-size:.55rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  font-weight:600;
+}
+
+/* ── Ticker strip ── */
+.hero-ticker-wrap{
+  background:#0d0d0d;
+  overflow:hidden;
+  border-top:1px solid rgba(126,200,136,.15);
+  border-bottom:1px solid rgba(126,200,136,.15);
+  padding-block:14px;
+  white-space:nowrap;
+}
+.hero-ticker{
+  display:inline-flex;
+  align-items:center;
+  gap:28px;
+  animation:ticker 28s linear infinite;
+  white-space:nowrap;
+}
+.hero-ticker span{
+  font-size:.75rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  font-weight:600;
+  flex-shrink:0;
+}
+.hero-ticker .tk-dot{
+  color:#7ec888;
+  font-size:.65rem;
+  letter-spacing:0;
+  opacity:.7;
+}
+@keyframes ticker{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.hero-ticker-wrap:hover .hero-ticker{
+  animation-play-state:paused;
+}
+
+/* ── Mobile ── */
+@media(max-width:768px){
+  .hero{
+    max-height:none;
+    height:100svh;
+  }
+  .hero-bottom{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .hero-title{
+    font-size:clamp(2.6rem,10vw,4.5rem);
+  }
+  .hero-scroll{ display:none; }
+  .hero-sub{ display:none; }
+}
+
+@media(max-width:480px){
+  .hero-ctas{ flex-direction:column; }
+  .hero-btn{ justify-content:center; }
+  .hero-tag{ font-size:1.1rem; }
+}
+
+/* SECTION LABEL */
+.sec-label{display:inline-flex;align-items:center;gap:14px;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green);font-weight:700}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--green-pale);max-width:50px}
+
+/* ── INTRO REDESIGN ── */
+.intro{padding-block:clamp(40px,6vw,80px)}
+.intro-inner{position:relative}
+
+.intro-bg-num{
+  position:absolute;
+  right:-10px;top:-20px;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(6rem,14vw,13rem);
+  font-weight:900;
+  color:rgba(46,92,58,.06);
+  line-height:1;
+  pointer-events:none;
+  letter-spacing:-.08em;
+  user-select:none;
+  z-index:0;
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(28px,4vw,64px);
+  align-items:start;
+  margin-top:28px;
+  position:relative;
+  z-index:1;
+}
+
+.intro-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,4.5vw,5rem);
+  font-weight:900;
+  letter-spacing:-.05em;
+  line-height:.88;
+  text-transform:uppercase;
+  color:#111;
+}
+.intro-title em{
+  display:block;
+  font-style:italic;
+  font-weight:400;
+  color:var(--green);
+  font-size:.74em;
+  margin-top:6px;
+}
+.intro-title .dash-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:16px;
+}
+.intro-title .dash-line{
+  height:2px;width:clamp(36px,4vw,52px);
+  background:var(--green);flex-shrink:0;
+}
+.intro-title .dash-sub{
+  font-family:'DM Sans',sans-serif;
+  font-size:.64rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--green);
+  font-weight:700;
+}
+
+.intro-copy{padding-top:6px}
+.intro-copy p{
+  font-size:clamp(.84rem,1.05vw,.94rem);
+  line-height:1.9;color:#555;margin-bottom:12px;
+}
+.intro-copy p:last-child{margin-bottom:0}
+.intro-copy strong{font-weight:600;color:var(--text)}
+
+.intro-tags{
+  display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;
+}
+.intro-tags span{
+  padding:.28rem .78rem;
+  border-radius:999px;
+  border:1.5px solid #c8dbc9;
+  background:#fff;
+  font-size:.62rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--green);
+  font-weight:700;
+  transition:.2s ease;
+}
+.intro-tags span:hover{background:var(--green-pale)}
+
+/* ornament divider */
+.intro-ornament{
+  display:flex;align-items:center;gap:16px;
+  margin:clamp(24px,3.5vw,40px) 0 clamp(20px,3vw,32px);
+}
+.intro-ornament .orn-line{
+  flex:1;height:1px;
+  background:linear-gradient(to right,transparent,#c8dbc9,transparent);
+}
+.intro-ornament .orn-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);flex-shrink:0;
+}
+
+/* ARCH PHOTO STRIP */
+.photo-strip{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:14px;
+  align-items:end;
+}
+.ph{position:relative;overflow:hidden;background:#d5d0cb}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s ease}
+.ph:hover img{transform:scale(1.05)}
+.ph::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));
+  border-radius:inherit;
+}
+.ph-caption{
+  position:absolute;bottom:14px;left:0;right:0;
+  text-align:center;z-index:2;
+  color:#fff;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+}
+/* arch shapes — pill top, squared bottom */
+.ph.tall{
+  height:clamp(260px,34vw,420px);
+  border-radius:999px 999px 28px 28px;
+}
+.ph.mid{
+  height:clamp(200px,27vw,330px);
+  border-radius:999px 999px 22px 22px;
+}
+.ph.short{
+  height:clamp(170px,22vw,270px);
+  border-radius:999px 999px 22px 22px;
+}
+
+@media(max-width:860px){
+  .intro-grid{grid-template-columns:1fr}
+  .intro-bg-num{font-size:clamp(5rem,22vw,9rem);right:-4px;top:-10px}
+  .photo-strip{grid-template-columns:1fr}
+  .ph.tall,.ph.mid,.ph.short{
+    height:clamp(220px,56vw,320px);
+    border-radius:999px 999px 22px 22px;
+  }
+}
+@media(max-width:480px){
+  .intro-tags span{font-size:.6rem}
+}
+
+
+/* SPACIOUS LAWN */
+.spacious{padding-block:clamp(40px,6vw,80px)}
+.spacious-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,3vw,40px);align-items:stretch;margin-top:36px}
+.spacious-img{border-radius:var(--radius-xl);overflow:hidden;min-height:clamp(300px,40vw,520px)}
+.spacious-img img{width:100%;height:100%;object-fit:cover}
+.spacious-copy{background:#fff;border-radius:var(--radius-xl);padding:clamp(22px,3.5vw,40px);display:flex;flex-direction:column;justify-content:center;gap:18px;border:1px solid var(--border)}
+.spacious-copy h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:.92;text-transform:uppercase}
+.spacious-copy h2 em{display:block;font-style:italic;font-weight:400;color:var(--green)}
+.spacious-copy .capacity{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,6rem);font-weight:900;color:var(--green);line-height:.9;letter-spacing:-.06em}
+.spacious-copy .capacity small{display:block;font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#999;margin-top:8px;font-weight:500}
+.spacious-copy p{font-size:clamp(.84rem,1.1vw,.95rem);color:#666;line-height:1.8}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.fit-pill{padding:.55rem .9rem;border-radius:10px;background:#f5f4f1;border:1px solid var(--border);font-size:.78rem;font-weight:600;color:var(--text)}
+
+/* ═══════════════════════════════════════
+   SECTION HEADER — centered above split
+═══════════════════════════════════════ */
+/* ── SECTION HEADER — no background, transparent ── */
+.feat-header-outer{
+  background:#0d0d0d;
+  text-align:center;
+  padding:clamp(28px,4vw,52px) clamp(18px,4vw,48px) clamp(20px,3vw,36px);
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+}
+.feat-header-outer .sec-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;
+  color:#7ec888;font-weight:700;margin-bottom:16px;
+  justify-content:center;
+}
+.feat-header-outer .sec-label::before{content:'';width:28px;height:1px;background:rgba(126,200,136,.4)}
+.feat-header-outer .sec-label::after{content:'';width:28px;height:1px;background:rgba(126,200,136,.4)}
+
+
+.feat-ornament-row{
+  display:flex;align-items:center;gap:16px;
+  background:#0d0d0d;
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  padding:0 clamp(18px,4vw,48px);
+}
+.feat-orn-line{
+  flex:1;height:1px;
+  background:linear-gradient(to right,transparent,rgba(126,200,136,.2),transparent);
+}
+
+.feat-main-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.8vw,4.2rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  line-height:.92;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:14px;
+}
+.feat-main-title em{font-style:italic;font-weight:400;color:#7ec888}
+
+.feat-main-desc{
+  font-size:clamp(.84rem,1.1vw,.96rem);
+  color:rgba(255,255,255,.65);   /* bumped up from .45 → .65 for better visibility */
+  line-height:1.8;
+  max-width:52ch;
+  margin:0 auto;
+}
+
+/* ═══════════════════════════════════════
+   DESKTOP — SPLIT HALF (grid)
+═══════════════════════════════════════ */
+.feat-outer{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-areas:"img content";
+  min-height:auto;
+  position:relative;
+  align-items:start;
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+}
+
+.feat-left{
+  grid-area:img;
+  position:sticky;
+  top:0;
+  height:100vh;
+  max-height:560px;
+  overflow:hidden;
+  align-self:start;
+}
+.img-layer{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);
+  transform:scale(1.05);
+}
+.img-layer.active{opacity:1;transform:scale(1)}
+.feat-left::after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(135deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.5) 100%);
+}
+.img-num{
+  position:absolute;top:20px;right:20px;z-index:3;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,6vw,6rem);font-weight:900;
+  color:rgba(255,255,255,.08);letter-spacing:-.06em;line-height:1;
+  transition:.5s ease;user-select:none;
+}
+.img-badge{
+  position:absolute;top:20px;left:20px;z-index:3;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.18);border-radius:14px;
+  padding:10px 14px;max-width:220px;
+}
+.img-badge-top{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px}
+.img-badge-dot{width:6px;height:6px;border-radius:50%;background:#7ec888;flex-shrink:0;box-shadow:0 0 8px rgba(126,200,136,.8);margin-top:3px}
+.img-badge-label{font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:700}
+.img-badge-title{font-family:'Playfair Display',serif;font-size:.88rem;font-weight:700;color:#fff;line-height:1.25;transition:.5s ease}
+
+/* ── RIGHT content panel ── */
+.feat-right{
+  grid-area:content;
+  background:#0d0d0d;
+  border-left:1px solid rgba(255,255,255,.06);
+  display:flex;flex-direction:column;
+  color:#fff;
+  height:100vh;
+  max-height:560px;
+  overflow:hidden;
+  position:sticky;
+  top:0;
+}
+
+/* feat-list scrolls INSIDE the clipped right panel */
+.feat-list{
+  flex:1;
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+.feat-list::-webkit-scrollbar{display:none}
+
+.feat-item{
+  display:grid;
+  grid-template-columns:clamp(44px,5vw,64px) 1fr auto;
+  align-items:center;gap:0;
+  padding:0 clamp(18px,3vw,36px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+  cursor:default;transition:.35s ease;
+}
+.feat-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:linear-gradient(to bottom,#2e5c3a,#7ec888);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:.4s cubic-bezier(.16,1,.3,1);
+}
+.feat-item:hover::before,.feat-item.active::before{transform:scaleY(1)}
+.feat-item:hover,.feat-item.active{background:rgba(255,255,255,.018)}
+
+.fi-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,2vw,2.2rem);font-weight:900;
+  color:rgba(255,255,255,.07);letter-spacing:-.04em;
+  padding:clamp(12px,1.8vw,18px) 0;
+  transition:.35s ease;user-select:none;
+}
+.feat-item:hover .fi-num,.feat-item.active .fi-num{color:rgba(126,200,136,.28)}
+
+.fi-main{
+  padding:clamp(12px,1.8vw,18px) clamp(12px,1.6vw,20px);
+  border-left:1px solid rgba(255,255,255,.05);
+  transition:.35s ease;height:100%;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.feat-item:hover .fi-main,.feat-item.active .fi-main{border-left-color:rgba(126,200,136,.14)}
+
+.fi-icon{
+  width:34px;height:34px;border-radius:9px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  display:grid;place-items:center;color:rgba(255,255,255,.4);
+  margin-bottom:8px;transition:.35s ease;flex-shrink:0;
+}
+.feat-item:hover .fi-icon,.feat-item.active .fi-icon{background:rgba(46,92,58,.3);border-color:rgba(126,200,136,.3);color:#7ec888}
+
+.fi-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.95rem,1.3vw,1.2rem);font-weight:700;
+  letter-spacing:-.03em;line-height:1.15;
+  color:rgba(255,255,255,.72);transition:.35s ease;
+}
+.feat-item:hover .fi-title,.feat-item.active .fi-title{color:#fff}
+
+.fi-desc{
+  margin-top:5px;font-size:clamp(.74rem,.9vw,.84rem);
+  color:rgba(255,255,255,.28);line-height:1.7;
+  max-height:0;overflow:hidden;
+  transition:.4s cubic-bezier(.16,1,.3,1);
+}
+.feat-item:hover .fi-desc,.feat-item.active .fi-desc{max-height:60px;color:rgba(255,255,255,.55)}
+
+.fi-arrow{padding-left:12px;color:rgba(255,255,255,.14);transition:.35s ease;flex-shrink:0}
+.feat-item:hover .fi-arrow,.feat-item.active .fi-arrow{color:#7ec888;transform:translateX(4px)}
+
+/* ═══════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════ */
+@media(max-width:860px){
+  .feat-outer{
+    display:flex;
+    flex-direction:column;
+    min-height:auto;
+    background:#0d0d0d;
+  }
+
+  .feat-right{ display:contents; }
+
+  .feat-left{
+    order:1;
+    position:sticky;
+    top:0%;                  /* ← changed from 30% to 10% */
+    height:52vw;
+    min-height:200px;
+    max-height:300px;
+    z-index:10;
+    width:100%;
+  }
+
+  .feat-list{
+    order:2;
+    position:relative;
+    z-index:1;
+    background:#0d0d0d;
+    overflow-y:visible;
+  }
+
+  .img-num{ font-size:clamp(3rem,12vw,5rem); top:12px; right:12px; }
+ .img-badge{ top:auto; bottom:12px; left:12px; padding:8px 12px; max-width:180px; }
+  .img-badge-title{ font-size:.8rem; }
+  .feat-item{ grid-template-columns:40px 1fr auto; padding:0 clamp(14px,4vw,20px); }
+  .fi-num{ font-size:clamp(1.3rem,5vw,1.8rem); padding:clamp(14px,3.5vw,20px) 0; }
+  .fi-main{ padding:clamp(14px,3.5vw,20px) clamp(10px,2.5vw,16px); }
+  .fi-title{ font-size:clamp(.9rem,4vw,1.1rem); }
+  .fi-desc{ max-height:none!important; color:rgba(255,255,255,.42)!important; }
+  .feat-item.active .fi-desc{ color:rgba(255,255,255,.65)!important; }
+}
+
+@media(max-width:480px){
+  .feat-item{ grid-template-columns:36px 1fr; }
+  .fi-arrow{ display:none; }
+  .feat-left{ height:58vw; max-height:260px; }
+}
+/* GALLERY */
+.gallery-sec{padding-block:clamp(40px,6vw,80px)}
+.gallery-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px}
+.gallery-title .small-label{font-family:'Playfair Display',serif;font-style:italic;font-size:.82rem;letter-spacing:.18em;color:var(--green);margin-bottom:8px;display:block}
+.gallery-title .big{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,4rem);font-weight:900;letter-spacing:-.04em;line-height:.92;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.gallery-title .big svg{color:var(--green);flex-shrink:0}
+.gallery-title .sub{font-size:.82rem;color:#999;margin-top:8px;font-style:italic}
+.fan-gallery{display:flex;align-items:center;overflow:hidden;height:clamp(300px,40vw,540px);border-radius:var(--radius-xl);background:#e0ddd8}
+.fan-item{flex:1;height:100%;overflow:hidden;position:relative;transition:flex .5s cubic-bezier(.16,1,.3,1);cursor:pointer;min-width:0}
+.fan-item:first-child{border-radius:var(--radius-xl) 0 0 var(--radius-xl)}
+.fan-item:last-child{border-radius:0 var(--radius-xl) var(--radius-xl) 0}
+.fan-item img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
+.fan-item:hover{flex:2.4}
+.fan-item:hover img{transform:scale(1.04)}
+.fan-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55));opacity:0;transition:.3s ease}
+.fan-item:hover::after{opacity:1}
+.fan-item .fan-label{position:absolute;bottom:18px;left:16px;z-index:2;color:#fff;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.3s ease;font-weight:700}
+.fan-item:hover .fan-label{opacity:1;transform:translateY(0)}
+
+/* ── WHY CHOOSE US REDESIGN ── */
+.why-sec{padding-block:clamp(40px,6vw,80px)}
+
+.why-sec .ws-top{
+  display:grid;grid-template-columns:1fr auto;
+  align-items:end;gap:32px;
+  padding-bottom:24px;
+  border-bottom:2px solid #111;
+  margin-bottom:0;
+}
+.ws-eyebrow{
+  font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--green);font-weight:700;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.ws-eyebrow::before{content:'';width:28px;height:2px;background:var(--green);flex-shrink:0}
+.ws-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,4rem);
+  font-weight:900;letter-spacing:-.05em;
+  line-height:.88;text-transform:uppercase;color:#111;
+}
+.ws-heading em{display:block;font-style:italic;font-weight:400;color:var(--green);margin-top:4px}
+.ws-right-col{text-align:right;max-width:280px}
+.ws-right-col p{font-size:.84rem;color:#666;line-height:1.8;margin-bottom:14px}
+.ws-book-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:.62rem 1.2rem;border-radius:999px;
+  border:1.5px solid var(--green);color:var(--green);
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;
+  background:transparent;transition:.2s ease;
+}
+.ws-book-btn:hover{background:var(--green);color:#fff}
+.ws-book-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.4}
+
+.ws-meta{
+  display:flex;align-items:center;flex-wrap:wrap;
+  border-bottom:1px solid #ccc;
+  padding:10px 0;margin-bottom:32px;
+}
+.ws-meta-item{
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  color:#999;font-weight:600;
+  padding-right:20px;margin-right:20px;
+  border-right:1px solid #ddd;
+}
+.ws-meta-item:last-child{border-right:none}
+.ws-meta-item strong{color:var(--green)}
+
+.why-sec .ws-top{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  align-items:start;
+  gap:40px;
+  padding-bottom:24px;
+  border-bottom:2px solid #111;
+  margin-bottom:0;
+}
+@media(max-width:860px){
+  .why-sec .ws-top{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .ws-right-col{
+    text-align:left;
+    max-width:100%;
+  }
+  .ws-heading{
+    font-size:clamp(2rem,7vw,3rem);
+  }
+  .ws-meta{display:none}
+}
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:clamp(24px,3.5vw,40px);
+}
+
+.wcard{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  min-height:clamp(180px,22vw,240px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:clamp(18px,2.2vw,24px);
+  border:1px solid transparent;
+  transition:.35s ease;
+  cursor:default;
+}
+/* LIGHT */
+.wcard.light{background:#f5f2ec;border-color:#e0ddd8}
+.wcard.light .wc-num{color:rgba(46,92,58,.1)}
+.wcard.light h3{color:#111}
+.wcard.light p{color:#666}
+.wcard.light .wc-icon{background:#fff;border:1.5px solid #d4e6d8;color:var(--green)}
+.wcard.light:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.08)}
+/* DARK */
+.wcard.dark{background:#0d120f;border-color:rgba(126,200,136,.1)}
+.wcard.dark .wc-num{color:rgba(126,200,136,.07)}
+.wcard.dark h3{color:#fff}
+.wcard.dark p{color:rgba(255,255,255,.52)}
+.wcard.dark .wc-icon{background:rgba(46,92,58,.3);border:1.5px solid rgba(126,200,136,.22);color:#7ec888}
+.wcard.dark:hover{border-color:rgba(126,200,136,.3)}
+/* PHOTO */
+.wcard.photo{border:none}
+.wcard.photo .cbg{position:absolute;inset:0;background-size:cover;background-position:center;transition:.5s ease;z-index:0}
+.wcard.photo::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,15,8,.38) 0%,rgba(5,15,8,.84) 100%);border-radius:20px;z-index:1}
+.wcard.photo:hover .cbg{transform:scale(1.05)}
+.wcard.photo h3{color:#fff}
+.wcard.photo p{color:rgba(255,255,255,.62)}
+.wcard.photo .wc-icon{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);color:#fff}
+.wcard.photo .wc-num{color:rgba(255,255,255,.06)}
+/* WIDE — spans both cols */
+.wcard.wide{
+  grid-column:1/-1;
+  flex-direction:row;
+  align-items:center;
+  gap:clamp(16px,2.5vw,28px);
+  min-height:clamp(110px,14vw,140px);
+  padding:clamp(18px,2vw,26px) clamp(20px,2.5vw,30px);
+}
+.wcard.wide .wc-inner{display:flex;align-items:center;gap:clamp(14px,2vw,22px);width:100%}
+.wcard.wide .wc-num{position:static;font-size:clamp(2.8rem,5vw,4rem);flex-shrink:0;line-height:1}
+
+/* internals */
+.wc-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,8vw,6rem);
+  font-weight:900;line-height:1;
+  letter-spacing:-.08em;
+  position:absolute;top:14px;right:18px;
+  user-select:none;pointer-events:none;
+  transition:.35s ease;
+}
+.wc-inner{position:relative;z-index:2}
+.wc-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:grid;place-items:center;
+  flex-shrink:0;margin-bottom:10px;
+  transition:.35s ease;
+}
+.wc-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.wc-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1rem,1.4vw,1.15rem);
+  font-weight:700;letter-spacing:-.03em;
+  line-height:1.2;margin-bottom:7px;
+}
+.wc-desc{
+  font-size:clamp(.78rem,.95vw,.86rem);
+  line-height:1.78;
+}
+
+@media(max-width:760px){
+  .why-grid{grid-template-columns:1fr 1fr}
+  .wcard.wide{flex-direction:column;align-items:flex-start}
+  .wcard.wide .wc-inner{flex-direction:column;align-items:flex-start}
+  .wcard.wide .wc-num{position:absolute;top:14px;right:18px;font-size:3rem}
+}
+@media(max-width:480px){
+  .why-grid{grid-template-columns:1fr}
+  .wcard.wide{grid-column:auto}
+}
+
+/* ARENA */
+.arena{position:relative;background:#0d120f;border-radius:28px;margin-top:clamp(24px,4vw,40px);padding:clamp(28px,4vw,52px) clamp(16px,3.5vw,44px) clamp(22px,3vw,40px);overflow:hidden}
+.arena::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,92,58,.28),transparent 68%);top:-160px;left:-100px;pointer-events:none;z-index:0}
+.arena::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,92,58,.2),transparent 68%);bottom:-160px;right:-100px;pointer-events:none;z-index:0}
+
+/* DESKTOP GRID */
+.dsk{display:grid;grid-template-columns:1fr 56px 1fr;position:relative;z-index:2}
+
+.sdot{width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,#3d8050,#2a5435);border:2px solid rgba(126,200,136,.3);box-shadow:0 0 0 8px rgba(46,92,58,.12),0 8px 22px rgba(0,0,0,.5);display:grid;place-items:center;margin:auto;position:relative;z-index:3}
+.sdot span{color:#fff;font-weight:900;font-size:.82rem;letter-spacing:.03em}
+
+/* CARD */
+.scard{
+  position:relative;
+  border-radius:18px;
+  padding:clamp(16px,2.2vw,26px);
+  align-self:center;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  min-height:150px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.scard .cbg{position:absolute;inset:0;background-size:cover;background-position:center;transition:.5s ease;z-index:0}
+.scard:hover .cbg{transform:scale(1.06)}
+.scard::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,15,8,.55) 0%,rgba(5,15,8,.88) 100%);z-index:1;border-radius:18px;transition:.3s ease}
+.scard:hover::after{background:linear-gradient(160deg,rgba(5,15,8,.4) 0%,rgba(5,15,8,.82) 100%)}
+
+.scard .ccontent{position:relative;z-index:2}
+.scard.L{margin-right:clamp(8px,1.5vw,18px);text-align:right}
+.scard.R{margin-left:clamp(8px,1.5vw,18px);text-align:left}
+.scard .num{display:block;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#7ec888;font-weight:800;margin-bottom:8px}
+.scard h3{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.5vw,1.3rem);font-weight:700;letter-spacing:-.03em;color:#fff;margin-bottom:8px;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.scard p{font-size:clamp(.8rem,1vw,.9rem);color:rgba(255,255,255,.82);line-height:1.75;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+.sblank{}
+.sarc{grid-column:1/-1;height:60px;display:flex;justify-content:center;align-items:center;position:relative;z-index:2}
+.sarc svg{width:100%;max-width:900px;display:block}
+
+/* MOBILE */
+.mob{display:none;position:relative;z-index:2;padding-left:36px}
+.mob::before{content:'';position:absolute;left:21px;top:0;bottom:0;width:2px;background:repeating-linear-gradient(to bottom,#4a8c5c 0,#4a8c5c 8px,transparent 8px,transparent 16px)}
+
+.mrow{position:relative;display:flex;align-items:flex-start;padding-bottom:clamp(16px,3.5vw,26px)}
+.mdot{position:absolute;left:-46px;top:2px;width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,#3d8050,#2a5435);border:2px solid rgba(126,200,136,.25);box-shadow:0 0 0 6px rgba(46,92,58,.12),0 5px 14px rgba(0,0,0,.5);display:grid;place-items:center;flex-shrink:0}
+.mdot span{color:#fff;font-weight:900;font-size:.75rem}
+
+.mcard{
+  position:relative;border-radius:16px;
+  padding:clamp(16px,3.5vw,24px);
+  width:100%;overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  min-height:140px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.mcard .cbg{position:absolute;inset:0;background-size:cover;background-position:center;transition:.5s ease;z-index:0}
+.mcard::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,15,8,.5) 0%,rgba(5,15,8,.88) 100%);z-index:1;border-radius:16px}
+.mcard .ccontent{position:relative;z-index:2}
+.mcard .num{display:block;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:#7ec888;font-weight:800;margin-bottom:8px}
+.mcard h3{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,5vw,1.35rem);font-weight:700;letter-spacing:-.03em;color:#fff;margin-bottom:8px;line-height:1.2;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.mcard p{font-size:clamp(.82rem,3.5vw,.92rem);color:rgba(255,255,255,.82);line-height:1.78;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+/* BOTTOM */
+.btm{position:relative;z-index:2;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:clamp(18px,2.8vw,32px);margin-top:28px}
+.btm h3{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:700;letter-spacing:-.04em;color:#fff;margin-bottom:10px;line-height:1.1}
+.btm p{font-size:clamp(.86rem,1.1vw,.96rem);color:rgba(255,255,255,.72);line-height:1.85}
+
+@media(max-width:760px){.dsk{display:none}.mob{display:block}}
+/* ── CTA BANNER ── */
+.cta-new{
+  position:relative;border-radius:28px;overflow:hidden;
+  min-height:clamp(420px,52vw,560px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:clamp(40px,6vw,72px) clamp(24px,6vw,80px) clamp(90px,12vw,110px);
+  margin-block:clamp(32px,5vw,64px);
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;z-index:0;
+}
+.cta-overlay1{position:absolute;inset:0;z-index:1;background:rgba(5,15,8,.78)}
+.cta-overlay2{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse at 50% 60%,rgba(46,92,58,.18),transparent 70%)}
+.cta-inner{position:relative;z-index:3;max-width:640px;width:100%}
+.cta-ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px}
+.cta-orn-line{width:44px;height:1px;background:rgba(126,200,136,.35)}
+.cta-orn-label{font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(126,200,136,.7);font-weight:700}
+.cta-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.88rem,1.2vw,1.05rem);
+  font-style:italic;color:rgba(255,255,255,.4);
+  margin-bottom:14px;line-height:1.65;
+}
+.cta-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,4.8rem);
+  font-weight:900;letter-spacing:-.05em;
+  line-height:.88;text-transform:uppercase;color:#fff;margin-bottom:8px;
+}
+.cta-heading em{display:block;font-style:italic;font-weight:400;color:#7ec888;font-size:.78em;margin-top:6px}
+.cta-sub{font-size:clamp(.8rem,.98vw,.9rem);color:rgba(255,255,255,.45);line-height:1.8;margin:16px auto 26px;max-width:46ch}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.cta-btn-primary{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:.76rem 1.55rem;border-radius:999px;
+  background:#7ec888;color:#0d1a10;
+  font-size:.78rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;text-decoration:none;
+  border:2px solid #7ec888;transition:.22s ease;
+}
+.cta-btn-primary:hover{background:transparent;color:#7ec888}
+.cta-btn-primary svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0}
+.cta-btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:.76rem 1.55rem;border-radius:999px;
+  background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.78);font-size:.78rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:.22s ease;
+}
+.cta-btn-ghost:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.38);color:#fff}
+.cta-btn-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0}
+.cta-stats{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  display:flex;align-items:stretch;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.35);
+}
+.cta-stat{flex:1;text-align:center;padding:clamp(10px,1.5vw,16px) 0;border-right:1px solid rgba(255,255,255,.07)}
+.cta-stat:last-child{border-right:none}
+.cta-stat-num{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.65rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.04em}
+.cta-stat-num span{color:#7ec888;font-size:.68em}
+.cta-stat-label{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.36);font-weight:600;margin-top:3px}
+
+@media(max-width:760px){
+  .cta-new{padding-bottom:clamp(90px,20vw,120px)}
+  .cta-stat-label{font-size:.46rem;letter-spacing:.12em}
+}
+@media(max-width:480px){
+  .cta-btns{flex-direction:column;align-items:stretch}
+  .cta-btn-primary,.cta-btn-ghost{justify-content:center}
+}
+
+/* ── CONTACT REDESIGN ── */
+.contact-new{
+  position:relative;
+  border-radius:28px;
+  overflow:hidden;
+  background:#0d120f;
+  border:1px solid rgba(126,200,136,.1);
+  margin-bottom:clamp(32px,5vw,64px);
+}
+.cn-top{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:0;
+}
+.cn-cell{
+  padding:clamp(20px,2.8vw,36px) clamp(18px,2.4vw,32px);
+  border-right:1px solid rgba(255,255,255,.07);
+  position:relative;
+}
+.cn-cell:last-child{border-right:none}
+.cn-label{
+  display:flex;align-items:center;gap:7px;
+  font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(126,200,136,.7);font-weight:700;margin-bottom:12px;
+}
+.cn-label-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#7ec888;flex-shrink:0;
+}
+.cn-cell strong{
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.95rem,1.4vw,1.2rem);
+  font-weight:700;color:#fff;
+  letter-spacing:-.02em;line-height:1.25;
+  margin-bottom:6px;
+}
+.cn-cell p{
+  font-size:clamp(.76rem,.88vw,.84rem);
+  color:rgba(255,255,255,.4);
+  line-height:1.75;
+}
+.cn-phones{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.cn-phone{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:.48rem .88rem;border-radius:10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  font-size:clamp(.8rem,.95vw,.9rem);
+  font-weight:700;color:#fff;
+  text-decoration:none;letter-spacing:.02em;
+  transition:.22s ease;
+}
+.cn-phone:hover{
+  background:rgba(46,92,58,.3);
+  border-color:rgba(126,200,136,.3);
+  color:#7ec888;
+}
+.cn-phone svg{
+  width:14px;height:14px;
+  stroke:#7ec888;fill:none;stroke-width:2;flex-shrink:0;
+}
+.cn-badges{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.cn-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.74rem;color:rgba(255,255,255,.48);font-weight:500;
+}
+.cn-badge svg{
+  width:13px;height:13px;
+  stroke:rgba(126,200,136,.55);fill:none;stroke-width:2;flex-shrink:0;
+}
+.cn-bottom{
+  border-top:1px solid rgba(255,255,255,.07);
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:16px;
+  padding:clamp(14px,1.8vw,20px) clamp(18px,2.4vw,32px);
+}
+.cn-address-line{display:flex;align-items:center;gap:10px}
+.cn-pin-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(46,92,58,.35);
+  border:1px solid rgba(126,200,136,.2);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.cn-pin-icon svg{width:15px;height:15px;stroke:#7ec888;fill:none;stroke-width:2}
+.cn-addr-text{font-size:.78rem;color:rgba(255,255,255,.36);line-height:1.6}
+.cn-addr-text strong{
+  color:rgba(255,255,255,.68);font-weight:600;
+  display:block;font-size:.82rem;margin-bottom:1px;
+}
+.cn-map-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:.55rem 1.1rem;border-radius:999px;
+  background:rgba(126,200,136,.08);
+  border:1.5px solid rgba(126,200,136,.22);
+  color:#7ec888;font-size:.7rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;white-space:nowrap;
+  transition:.22s ease;
+}
+.cn-map-btn:hover{background:rgba(46,92,58,.4);border-color:rgba(126,200,136,.45)}
+.cn-map-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2}
+.cn-bg-num{
+  position:absolute;right:20px;top:50%;
+  transform:translateY(-58%);
+  font-family:'Playfair Display',serif;
+  font-size:clamp(6rem,12vw,10rem);
+  font-weight:900;color:rgba(255,255,255,.025);
+  letter-spacing:-.08em;line-height:1;
+  pointer-events:none;user-select:none;
+}
+
+@media(max-width:760px){
+  .cn-top{grid-template-columns:1fr}
+  .cn-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+  .cn-cell:last-child{border-bottom:none}
+  .cn-bottom{grid-template-columns:1fr;gap:12px}
+  .cn-map-btn{width:fit-content}
+  .cn-bg-num{display:none}
+}
+@media(max-width:480px){
+  .cn-phone{font-size:.82rem}
+}
+
+/* BTN OUTLINE */
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:.8rem 1.4rem;border-radius:999px;border:1.5px solid var(--green);color:var(--green);font-size:.8rem;font-weight:700;letter-spacing:.04em;width:fit-content;transition:.2s ease}
+.btn-outline:hover{background:var(--green);color:#fff}
+
+@media(max-width:1000px){.intro-grid,.spacious-grid,.cta-banner{grid-template-columns:1fr}.cta-btns-col{flex-direction:row;flex-wrap:wrap}}
+@media(max-width:760px){.photo-strip{grid-template-columns:1fr}.occasion-grid,.fit-grid{grid-template-columns:1fr}.fan-gallery{height:260px}.contact-strip{grid-template-columns:1fr}.contact-cell{border-right:none;border-bottom:1px solid var(--border)}.contact-cell:last-child{border-bottom:none}.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.why-grid{grid-template-columns:1fr}}
+
+
+/* section takes full width with minimal side padding */
+.occ3{
+  padding-block: clamp(20px,3vw,36px);
+  padding-inline: 0;
+}
+
+.occ3-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:#2e5c3a;font-weight:700;margin-bottom:clamp(12px,1.8vw,20px);
+}
+.occ3-label::before{content:'';width:36px;height:2px;background:#2e5c3a;flex-shrink:0}
+.occ3-label::after{content:'';width:36px;height:2px;background:#2e5c3a;flex-shrink:0}
+
+.occ3-layout{
+  display:grid;
+  grid-template-columns:clamp(280px,30%,380px) 1fr;
+  gap:0;
+  background:#fff;
+  border-radius:24px;
+  border:1px solid #e0ddd8;
+  overflow:hidden;
+  height:clamp(560px,68vh,680px);
+}
+
+/* ── LEFT PANEL ── */
+.occ3-left{
+  background:#fff;
+  border-right:4px solid #2e5c3a;
+  padding:clamp(22px,2.8vw,34px) clamp(20px,2.4vw,30px);
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;z-index:2;overflow:hidden;
+}
+.occ3-left::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:100px;
+  background:linear-gradient(to top,#f5f4f1,transparent);pointer-events:none;z-index:0;
+}
+.occ3-left-top{position:relative;z-index:1}
+.occ3-eyebrow{font-size:.60rem;letter-spacing:.3em;text-transform:uppercase;color:#2e5c3a;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.occ3-eyebrow::before{content:'';width:18px;height:2px;background:#2e5c3a;flex-shrink:0}
+.occ3-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,2.8vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:.9;text-transform:uppercase;color:#111}
+.occ3-title em{display:block;font-style:italic;font-weight:400;color:#2e5c3a;font-size:.82em;margin-top:5px}
+.occ3-desc{margin-top:clamp(10px,1.4vw,16px);font-size:clamp(.8rem,.95vw,.92rem);color:#666;line-height:1.78}
+
+/* 9+ count — reduced font size */
+.occ3-count{display:flex;align-items:baseline;gap:8px;margin-top:clamp(12px,1.6vw,20px)}
+.occ3-count strong{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.7rem,2.4vw,2.6rem);
+  font-weight:900;color:#2e5c3a;line-height:1;letter-spacing:-.05em;
+}
+.occ3-count span{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#999;font-weight:600;line-height:1.4}
+
+/* CTA */
+.occ3-left-bottom{position:relative;z-index:1;margin-top:clamp(14px,2vw,22px)}
+.occ3-cta-label{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:#999;font-weight:700;margin-bottom:8px}
+.occ3-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:clamp(11px,1.4vw,15px) clamp(13px,1.6vw,17px);
+  border-radius:13px;text-decoration:none;margin-bottom:8px;transition:.25s ease;gap:12px;
+}
+.occ3-btn-primary{background:#2e5c3a;color:#fff;border:1.5px solid #2e5c3a}
+.occ3-btn-primary:hover{background:#245030;transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,92,58,.3)}
+.occ3-btn-secondary{background:#fff;color:#2e5c3a;border:1.5px solid #d4e6d8}
+.occ3-btn-secondary:hover{background:#d4e6d8;transform:translateY(-2px)}
+.occ3-btn-label{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;opacity:.65;display:block;margin-bottom:2px}
+.occ3-btn strong{
+  font-size:clamp(.82rem,.98vw,.92rem);
+  font-weight:700;letter-spacing:-.01em;
+}
+
+/* ── RIGHT CAROUSEL ── */
+.occ3-right{
+  overflow:hidden;display:flex;flex-direction:column;
+  background:#f5f4f1;position:relative;
+}
+
+/* Desktop: subtle green tint fade */
+.occ3-right::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:50px;
+  background:linear-gradient(to right,rgba(46,92,58,.18),transparent);
+  pointer-events:none;z-index:10;
+}
+.occ3-right::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:50px;
+  background:linear-gradient(to left,rgba(46,92,58,.18),transparent);
+  pointer-events:none;z-index:10;
+}
+
+.occ3-track-wrap{
+  flex:1;display:flex;align-items:center;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  gap:clamp(10px,1.4vw,14px);
+  padding:clamp(18px,2.4vw,28px) 0;
+}
+.occ3-track-wrap::-webkit-scrollbar{display:none}
+
+/* ── CARD ── */
+.occ3-card{
+  flex-shrink:0;
+  width:clamp(175px,19vw,220px);
+  height:clamp(280px,50vh,420px);
+  border-radius:16px;overflow:hidden;position:relative;
+  scroll-snap-align:center;cursor:pointer;
+  transition:.45s cubic-bezier(.16,1,.3,1);
+  border:2px solid transparent;
+  transform:scale(.87);filter:brightness(.72);opacity:.85;
+}
+.occ3-card.is-active{
+  transform:scale(1);filter:brightness(1);opacity:1;
+  border-color:rgba(46,92,58,.35);
+  box-shadow:0 22px 52px rgba(0,0,0,.24);z-index:5;
+}
+.occ3-card:hover:not(.is-active){transform:scale(.92);filter:brightness(.85);opacity:1}
+.occ3-card.is-active:hover{transform:scale(1.02) translateY(-4px)}
+
+.occ3-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:.5s ease}
+.occ3-card.is-active:hover .occ3-card-bg{transform:scale(1.05)}
+
+.occ3-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.12) 40%,rgba(0,0,0,.75) 100%);
+  transition:.3s;
+}
+.occ3-card.is-active::after{
+  background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.08) 35%,rgba(0,0,0,.78) 100%);
+}
+
+.occ3-card-content{position:absolute;bottom:0;left:0;right:0;padding:clamp(12px,1.8vw,16px);z-index:2}
+.occ3-card-num{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(126,200,136,.9);font-weight:800;margin-bottom:4px}
+.occ3-card-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.88rem,1.3vw,1.05rem);
+  font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.15;margin-bottom:4px;
+  text-shadow:0 2px 12px rgba(0,0,0,.5);
+}
+.occ3-card-desc{font-size:clamp(.64rem,.8vw,.74rem);color:rgba(255,255,255,0);line-height:1.65;max-height:0;overflow:hidden;transition:.45s cubic-bezier(.16,1,.3,1)}
+.occ3-card.is-active .occ3-card-desc{max-height:80px;color:rgba(255,255,255,.85)}
+
+.occ3-card-tag{
+  position:absolute;top:10px;left:10px;z-index:3;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);border-radius:999px;
+  padding:.24rem .6rem;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;font-weight:700;opacity:0;transform:translateY(-4px);transition:.3s ease;
+}
+.occ3-card.is-active .occ3-card-tag{opacity:1;transform:translateY(0)}
+
+/* ── DOTS ── */
+.occ3-dots{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0 12px;flex-shrink:0;position:relative;z-index:15}
+.occ3-dot{width:6px;height:6px;border-radius:999px;background:#ccc;transition:.3s ease;cursor:pointer;position:relative;overflow:hidden}
+.occ3-dot.active{width:22px;background:#2e5c3a}
+.occ3-dot.active::after{
+  content:'';position:absolute;left:0;top:0;height:100%;width:0;
+  background:rgba(255,255,255,.45);border-radius:999px;
+  animation:dotProg var(--dur,3.5s) linear forwards;
+}
+@keyframes dotProg{from{width:0}to{width:100%}}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  .occ3-layout{grid-template-columns:1fr;border-radius:22px;height:auto}
+  .occ3-left{border-right:none;border-bottom:4px solid #2e5c3a;padding:clamp(22px,5vw,32px)}
+  .occ3-left::after{display:none}
+  /* Mobile: thin green tint fade — replaces heavy white */
+  .occ3-right::before{
+    width:28px;
+    background:linear-gradient(to right,rgba(20,50,28,.22),transparent);
+  }
+  .occ3-right::after{
+    width:28px;
+    background:linear-gradient(to left,rgba(20,50,28,.22),transparent);
+  }
+  .occ3-card{width:clamp(165px,46vw,225px);height:clamp(250px,56vw,330px)}
+}
+@media(max-width:480px){
+ .occ3{padding-block:clamp(14px,4vw,22px); padding-inline:0;}
+  .occ3-layout{border-radius:18px}
+  .occ3-title{font-size:clamp(1.7rem,7.5vw,2.4rem)}
+  .occ3-card{width:clamp(158px,60vw,200px);height:clamp(230px,60vw,290px)}
+  .occ3-btn strong{font-size:.84rem}
+  .occ3-right::before,.occ3-right::after{width:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO SECTION — Bottom Anchored ── -->
+<section class="hero">
+
+  <!-- Background image -->
+  <div class="hero-bg">
+    <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/9faa4fefd2ec57c60b2219d864c40a3fc8a41c3f.jpg" alt="NMBPL Stadium Lawn & Banquet">
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Top badge -->
+  <div class="hero-top">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      NMBPL STADIUM LAWN & BANQUET &nbsp;·&nbsp; RAJAJIPURAM, LUCKNOW
+    </div>
+  </div>
+
+  <!-- Bottom anchored content -->
+  <div class="hero-bottom">
+
+    <!-- Left: Main heading -->
+    <div class="hero-bl">
+      <h1 class="hero-title">
+        LAWN &<br><em>&amp; BANQUET</em>
+      </h1>
+    </div>
+
+    <!-- Right: Tagline + CTAs + scroll -->
+    <div class="hero-br">
+      <p class="hero-tag">
+        <em>Where Celebrations Turn</em><br>Into Grand Memories
+      </p>
+      <p class="hero-sub">
+        At NMBPL Stadium Lawn & Banquet, every celebration is designed to feel special, elegant, and effortless.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="hero-btn hero-btn-primary">
+          Book Venue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="#occasions" class="hero-btn hero-btn-outline">
+          Explore Events
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /hero-bottom -->
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>scroll</span>
+  </div>
+
+</section>
+
+<!-- Ticker strip -->
+<div class="hero-ticker-wrap">
+  <div class="hero-ticker">
+    <span>Weddings</span><span class="tk-dot">✦</span>
+    <span>Receptions</span><span class="tk-dot">✦</span>
+    <span>Engagements</span><span class="tk-dot">✦</span>
+    <span>Anniversary Celebrations</span><span class="tk-dot">✦</span>
+    <span>Birthday Parties</span><span class="tk-dot">✦</span>
+    <span>Corporate Events</span><span class="tk-dot">✦</span>
+    <span>Cultural Events</span><span class="tk-dot">✦</span>
+    <span>Social Gatherings</span><span class="tk-dot">✦</span>
+    <span>Community Programs</span><span class="tk-dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>Weddings</span><span class="tk-dot">✦</span>
+    <span>Receptions</span><span class="tk-dot">✦</span>
+    <span>Engagements</span><span class="tk-dot">✦</span>
+    <span>Anniversary Celebrations</span><span class="tk-dot">✦</span>
+    <span>Birthday Parties</span><span class="tk-dot">✦</span>
+    <span>Corporate Events</span><span class="tk-dot">✦</span>
+    <span>Cultural Events</span><span class="tk-dot">✦</span>
+    <span>Social Gatherings</span><span class="tk-dot">✦</span>
+    <span>Community Programs</span><span class="tk-dot">✦</span>
+  </div>
+</div>
+
+<div class="page">
+
+<section class="intro">
+  <span class="sec-label">About the Venue</span>
+  <div class="intro-inner">
+    <div class="intro-bg-num">01</div>
+
+    <div class="intro-grid">
+      <div>
+        <h2 class="intro-title">
+          TASTE THE<br>GRANDEUR
+          <em>Of Celebration</em>
+          <div class="dash-row">
+            <span class="dash-line"></span>
+            <span class="dash-sub">NMBPL Stadium · Rajajipuram</span>
+          </div>
+        </h2>
+      </div>
+
+      <div class="intro-copy">
+        <p>At <strong>NMBPL Stadium Lawn & Banquet</strong>, every celebration is designed to feel special, elegant, and effortless. With large open lawns, refined banquet facilities, and complete event support, we offer an ideal venue for hosting memorable gatherings of every scale.</p>
+        <p>Whether you are planning an intimate family function or a large social event, our venue combines big space, flexibility, and professional management to create an experience your guests will remember for years.</p>
+        <p>Located in the heart of Rajajipuram, we offer <strong>in-house catering</strong> with a wide range of menu options, music system on request, elegant lighting and decoration, and an experienced team for seamless event execution. Both <strong>indoor and outdoor</strong> event venue options are available.</p>
+        <div class="intro-tags">
+          <span>Weddings</span>
+          <span>Receptions</span>
+          <span>Corporate</span>
+          <span>Birthdays</span>
+          <span>Cultural Events</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-ornament">
+      <div class="orn-line"></div>
+      <div class="orn-dot"></div>
+      <div class="orn-line"></div>
+    </div>
+
+    <div class="photo-strip">
+      <div class="ph tall">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg" alt="Outdoor lawn venue with ambient lighting" width="900" height="600" loading="lazy">
+        <span class="ph-caption">Outdoor Lawn</span>
+      </div>
+      <div class="ph mid">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/81f228e9334906d9fd2b861f33653d917097781e.jpg" alt="Elegant garden seating setup" width="700" height="600" loading="lazy">
+        <span class="ph-caption">Garden Setting</span>
+      </div>
+      <div class="ph short">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg" alt="Evening ambience with string lights" width="700" height="600" loading="lazy">
+        <span class="ph-caption">Evening Ambience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="occ3">
+
+  <div style="display:flex;justify-content:center;margin-bottom:clamp(12px,1.8vw,20px)">
+    <span class="occ3-label">A Venue for Every Occasion</span>
+  </div>
+
+  <div class="occ3-layout">
+
+    <!-- LEFT -->
+    <div class="occ3-left">
+      <div class="occ3-left-top">
+        <p class="occ3-eyebrow">Occasions We Host</p>
+        <h2 class="occ3-title">Every<br>Occasion,<em>Every Style</em></h2>
+        <p class="occ3-desc">Every event has its own style, scale, and expectations. That is why <strong>NMBPL Stadium Lawn &amp; Banquet</strong> is designed to adapt beautifully to different celebration formats.</p>
+        <div class="occ3-count">
+          <strong>9+</strong>
+          <span>Occasion<br>Types Hosted</span>
+        </div>
+      </div>
+      <div class="occ3-left-bottom">
+        <p class="occ3-cta-label">Book Your Date</p>
+        <a href="tel:+919870269006" class="occ3-btn occ3-btn-primary">
+          <div><span class="occ3-btn-label">Primary</span><strong>+91 98702 69006</strong></div>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a href="tel:+919999991447" class="occ3-btn occ3-btn-secondary">
+          <div><span class="occ3-btn-label">Alternate</span><strong>+91 99999 91447</strong></div>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT CAROUSEL -->
+    <div class="occ3-right">
+      <div class="occ3-track-wrap" id="carousel">
+
+        <div class="occ3-card" data-idx="0">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Weddings</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">01</p><h3 class="occ3-card-title">Weddings</h3><p class="occ3-card-desc">A perfect backdrop for your most cherished celebration, with flexible décor and seating.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="1">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Receptions</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">02</p><h3 class="occ3-card-title">Receptions</h3><p class="occ3-card-desc">Elegant reception spaces designed to welcome guests in style with spacious lawn setup.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="2">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Engagement</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">03</p><h3 class="occ3-card-title">Engagement Ceremonies</h3><p class="occ3-card-desc">Intimate, romantic settings to celebrate the beginning of forever together.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="3">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Anniversary</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">04</p><h3 class="occ3-card-title">Anniversary Celebrations</h3><p class="occ3-card-desc">Mark milestones of love in a venue that matches the grandeur of your journey.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="4">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Birthday</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">05</p><h3 class="occ3-card-title">Birthday Parties</h3><p class="occ3-card-desc">From intimate gatherings to grand celebrations — every birthday deserves a memorable setting.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="5">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Social</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">06</p><h3 class="occ3-card-title">Social Gatherings</h3><p class="occ3-card-desc">Spacious grounds that bring people together for joyful community moments.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="6">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Cultural</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">07</p><h3 class="occ3-card-title">Cultural Events</h3><p class="occ3-card-desc">Rich traditions celebrated in a space that honours culture, colour, and community.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="7">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Corporate</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">08</p><h3 class="occ3-card-title">Corporate Functions</h3><p class="occ3-card-desc">Professional event setups with flexible configurations for teams, launches, and conferences.</p></div>
+        </div>
+
+        <div class="occ3-card" data-idx="8">
+          <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80')"></div>
+          <span class="occ3-card-tag">Community</span>
+          <div class="occ3-card-content"><p class="occ3-card-num">09</p><h3 class="occ3-card-title">Community Programs</h3><p class="occ3-card-desc">Open, welcoming venue for community-driven programs, cultural meets, and local events.</p></div>
+        </div>
+
+      </div>
+      <div class="occ3-dots" id="dots"></div>
+    </div>
+
+  </div>
+</section>
+<!-- ════════════════ SPACIOUS LAWN ════════════════ -->
+<section class="spacious" id="spacious">
+  <span class="sec-label">Spacious Lawn & Elegant Event Setup</span>
+  <div class="spacious-grid">
+    <div class="spacious-img">
+      <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg" alt="Spacious outdoor event lawn venue" width="900" height="700" loading="lazy">
+    </div>
+    <div class="spacious-copy">
+      <div>
+        <div class="capacity">2000<small>Guests comfortably accommodated</small></div>
+      </div>
+      <h2>Spacious Lawn &<br><em>Elegant Event Setup</em></h2>
+      <p>The open lawn at NMBPL Stadium offers a fresh and welcoming atmosphere that creates a stunning backdrop for day and evening celebrations. Our spacious layout comfortably accommodates both medium-sized and large gatherings, making it ideal for events where comfort and movement are equally important.</p>
+      <p>The venue allows multiple seating formats, stage arrangements, food counters, and entertainment zones without compromising guest comfort. This flexibility makes the venue suitable for:</p>
+      <div class="fit-grid">
+        <span class="fit-pill">Intimate celebrations</span>
+        <span class="fit-pill">Mid-sized family functions</span>
+        <span class="fit-pill">Large wedding events</span>
+        <span class="fit-pill">Grand receptions</span>
+        <span class="fit-pill">Corporate Events</span>
+        <span class="fit-pill">Other Social Events</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION HEADER — centered above the split ── -->
+<div class="feat-header-outer" id="features">
+  <div class="sec-label">Features of Venue</div>
+  <h2 class="feat-main-title">
+    BUILT FOR <em>EVERY</em><br>CELEBRATION
+  </h2>
+  <p class="feat-main-desc">Every feature at NMBPL Stadium Lawn & Banquet is designed to make your event feel effortless, elegant, and unforgettable.</p>
+</div>
+
+<div class="feat-ornament-row">
+  <div class="feat-orn-line"></div>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(126,200,136,0.55)" stroke-width="1.4" style="flex-shrink:0"><path d="M12 2C6 2 3 7 3 12c0 3 2 6 5 8"/><path d="M12 2c6 0 9 5 9 10 0 3-2 6-5 8"/><path d="M12 2v20"/><path d="M8 8c1 2 2 4 4 6"/><path d="M16 8c-1 2-2 4-4 6"/></svg>
+  <div class="feat-orn-line"></div>
+</div>
+
+<div class="feat-outer">
+
+  <!-- ① IMAGE — first in DOM so mobile sticky works correctly -->
+  <div class="feat-left" id="featLeft">
+    <div class="img-layer active" data-idx="0" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg')"></div>
+    <div class="img-layer" data-idx="1" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg')"></div>
+    <div class="img-layer" data-idx="2" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg')"></div>
+    <div class="img-layer" data-idx="3" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/81f228e9334906d9fd2b861f33653d917097781e.jpg')"></div>
+    <div class="img-layer" data-idx="4" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6c715e71450c0de3c740ff4024355ccb3070e6c8.jpg')"></div>
+    <div class="img-layer" data-idx="5" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7fdc4911604eab50b3521ffa244c8559b3033d11.jpg')"></div>
+    <div class="img-layer" data-idx="6" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/25f00c893fd2a0a51e25b6826f432caff2c0efdc.jpg')"></div>
+    <div class="img-num" id="imgNum">01</div>
+    <div class="img-badge">
+      <div class="img-badge-top">
+        <div class="img-badge-dot"></div>
+        <div class="img-badge-label">NMBPL Stadium · Rajajipuram</div>
+      </div>
+      <div class="img-badge-title" id="imgBadgeTitle">Lush Green Lawn</div>
+    </div>
+  </div>
+
+  <!-- ② CONTENT — only feat-list, no right-header inside -->
+  <div class="feat-right">
+    <div class="feat-list" id="featList">
+
+      <div class="feat-item active" data-idx="0">
+        <div class="fi-num">01</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/></svg></div>
+          <div class="fi-title">Lush Green Lawn</div>
+          <div class="fi-desc">A stunning natural backdrop — lush open grounds for every celebration, day or evening.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feat-item" data-idx="1">
+        <div class="fi-num">02</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/></svg></div>
+          <div class="fi-title">Banquet Hall</div>
+          <div class="fi-desc">Weather-flexible indoor hall — perfect for controlled ambiance and elegant indoor celebrations.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feat-item" data-idx="2">
+        <div class="fi-num">03</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M2 12h4M18 12h4"/></svg></div>
+          <div class="fi-title">End-to-End Event Support</div>
+          <div class="fi-desc">Experienced team for complete seamless execution — from setup to the final farewell.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feat-item" data-idx="3">
+        <div class="fi-num">04</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3v18"/><path d="M17 3v18"/><path d="M3 8h18"/><path d="M3 16h18"/></svg></div>
+          <div class="fi-title">In-house Catering</div>
+          <div class="fi-desc">Freshly managed catering for different cuisines and guest sizes — wide menu options.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feat-item" data-idx="4">
+        <div class="fi-num">05</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <div class="fi-title">Music & DJ Setup</div>
+          <div class="fi-desc">Premium sound & DJ setup available on request for the perfect entertainment atmosphere.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feat-item" data-idx="5">
+        <div class="fi-num">06</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M5 5l4.2 4.2M19 5l-4.2 4.2M2 12h6M22 12h-6"/></svg></div>
+          <div class="fi-title">Attractive Lighting</div>
+          <div class="fi-desc">Stunning lighting from warm intimate settings to grand dramatic event setups.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feat-item" data-idx="6">
+        <div class="fi-num">07</div>
+        <div class="fi-main">
+          <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M9 8h6M9 16h4"/></svg></div>
+          <div class="fi-title">Parking & Valet Facility</div>
+          <div class="fi-desc">Parking & valet for every guest — smooth hassle-free arrival and departure.</div>
+        </div>
+        <div class="fi-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+    </div><!-- /feat-list -->
+  </div><!-- /feat-right -->
+
+</div><!-- /feat-outer -->
+<!-- ════════════════ GALLERY ════════════════ -->
+<section class="gallery-sec" id="gallery">
+  <div class="gallery-head">
+    <div class="gallery-title">
+      <span class="small-label">Gallery</span>
+      <div class="big">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22v-7"/><path d="M7.5 15.5a6 6 0 0 1 9 0"/><path d="M4.5 10.5a9 9 0 0 1 15 0"/><path d="M2 6a12 12 0 0 1 20 0"/></svg>
+        OF OUR &nbsp;<em style="font-style:italic;font-weight:400">VENUE</em>
+      </div>
+      <div class="sub">Sip, relax, and explore our venue spaces, décor styles, and event settings</div>
+    </div>
+    <a href="tel:+919870269006" class="btn-outline">Book Venue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+  <div class="fan-gallery">
+    <div class="fan-item"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6c715e71450c0de3c740ff4024355ccb3070e6c8.jpg" alt="Outdoor event setup" width="800" height="600" loading="lazy"><span class="fan-label">Outdoor Events</span></div>
+    <div class="fan-item"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg" alt="Evening celebrations" width="800" height="600" loading="lazy"><span class="fan-label">Evening Gatherings</span></div>
+    <div class="fan-item"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg" alt="Garden venue style" width="800" height="600" loading="lazy"><span class="fan-label">Garden Setup</span></div>
+    <div class="fan-item"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/81f228e9334906d9fd2b861f33653d917097781e.jpg" alt="Banquet style seating" width="800" height="600" loading="lazy"><span class="fan-label">Banquet Style</span></div>
+    <div class="fan-item"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg" alt="Night event ambience" width="800" height="600" loading="lazy"><span class="fan-label">Night Celebrations</span></div>
+  </div>
+</section>
+
+<section class="why-sec">
+  <div class="ws-top">
+    <div>
+      <div class="ws-eyebrow">Why Choose Us</div>
+    <h2 class="ws-heading">A PRIME VENUE,<em>Every Reason to Choose</em></h2>
+    </div>
+    <div class="ws-right-col">
+      <p>We transform your event ideas into well-organised experiences where décor, dining, space, and hospitality work together seamlessly.</p>
+      <a href="tel:+919870269006" class="ws-book-btn">
+        Book Venue
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="ws-meta">
+    <div class="ws-meta-item">Capacity <strong>2000+</strong></div>
+    <div class="ws-meta-item">Events <strong>500+</strong></div>
+    <div class="ws-meta-item">Location <strong>Rajajipuram, Lucknow</strong></div>
+    <div class="ws-meta-item">Est. <strong>10+ Years</strong></div>
+  </div>
+
+  <div class="why-grid">
+
+    <!-- 01 PHOTO -->
+    <div class="wcard photo">
+      <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg')"></div>
+      <div class="wc-num">01</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="wc-title">Large Open Venue Area</h3>
+        <p class="wc-desc">Spacious grounds that comfortably accommodate every scale of celebration.</p>
+      </div>
+    </div>
+
+    <!-- 02 LIGHT -->
+    <div class="wcard light">
+      <div class="wc-num">02</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <h3 class="wc-title">Affordable Planning Flexibility</h3>
+        <p class="wc-desc">Different event sizes, setups, and budgets — all without compromising quality.</p>
+      </div>
+    </div>
+
+    <!-- 03 DARK -->
+    <div class="wcard dark">
+      <div class="wc-num">03</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 class="wc-title">Easy Accessibility in Lucknow</h3>
+        <p class="wc-desc">Conveniently located in Rajajipuram — reachable from all parts of the city.</p>
+      </div>
+    </div>
+
+    <!-- 04 PHOTO -->
+    <div class="wcard photo">
+      <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg')"></div>
+      <div class="wc-num">04</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 class="wc-title">Experienced Event Team</h3>
+        <p class="wc-desc">Professional team ensuring smooth management and flawless execution.</p>
+      </div>
+    </div>
+
+    <!-- 05 LIGHT -->
+    <div class="wcard light">
+      <div class="wc-num">05</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 class="wc-title">Smooth Guest Movement</h3>
+        <p class="wc-desc">Thoughtfully designed layout for free and comfortable movement between all zones.</p>
+      </div>
+    </div>
+
+    <!-- 06 DARK -->
+    <div class="wcard dark">
+      <div class="wc-num">06</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3 class="wc-title">Organised Service Support</h3>
+        <p class="wc-desc">Every element professionally coordinated from arrival to departure.</p>
+      </div>
+    </div>
+
+    <!-- 07 PHOTO WIDE -->
+    <div class="wcard photo wide">
+      <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg');background-position:center 40%"></div>
+      <div class="wc-num">07</div>
+      <div class="wc-inner">
+        <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <h3 class="wc-title">Clean & Well-Connected Surroundings</h3>
+          <p class="wc-desc">A polished, well-maintained environment at NMBPL Stadium, Sector 6, Block E, Rajajipuram — easy for guests from all directions in Lucknow.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-new">
+  <div class="cta-bg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/bc26830452edfe304b6053addb559142636f46bd.jpg')"></div>
+  <div class="cta-overlay1"></div>
+  <div class="cta-overlay2"></div>
+
+  <div class="cta-inner">
+    <div class="cta-ornament">
+      <div class="cta-orn-line"></div>
+      <span class="cta-orn-label">NMBPL Stadium · Rajajipuram · Lucknow</span>
+      <div class="cta-orn-line"></div>
+    </div>
+
+    <p class="cta-quote">Where Celebrations Turn into Grand Memories</p>
+
+    <h2 class="cta-heading">
+      BOOK YOUR
+      <em>Grand Celebration</em>
+    </h2>
+
+    <p class="cta-sub">Call us to discuss your requirements and reserve your preferred date. Weddings, receptions, corporate events, birthdays, and private celebrations — all hosted with care.</p>
+
+    <div class="cta-btns">
+      <a href="tel:+919870269006" class="cta-btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 98702 69006
+      </a>
+      <a href="tel:+919999991447" class="cta-btn-ghost">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 99999 91447
+      </a>
+    </div>
+  </div>
+
+  <div class="cta-stats">
+    <div class="cta-stat"><div class="cta-stat-num">500<span>+</span></div><div class="cta-stat-label">Events Hosted</div></div>
+    <div class="cta-stat"><div class="cta-stat-num">2000<span>+</span></div><div class="cta-stat-label">Guest Capacity</div></div>
+    <div class="cta-stat"><div class="cta-stat-num">10<span>+</span></div><div class="cta-stat-label">Years of Trust</div></div>
+    <div class="cta-stat"><div class="cta-stat-num">9<span>+</span></div><div class="cta-stat-label">Occasion Types</div></div>
+  </div>
+</div>
+
+<div class="contact-new">
+  <div class="cn-bg-num">LKO</div>
+
+  <div class="cn-top">
+
+    <!-- ADDRESS -->
+    <div class="cn-cell">
+      <div class="cn-label"><span class="cn-label-dot"></span>Our Location</div>
+      <strong>NMBPL Stadium,<br>Rajajipuram</strong>
+      <p>Sector 6, Block E,<br>Rajajipuram, Lucknow,<br>Uttar Pradesh</p>
+    </div>
+
+    <!-- PHONES -->
+    <div class="cn-cell">
+      <div class="cn-label"><span class="cn-label-dot"></span>Book & Enquire</div>
+      <div class="cn-phones">
+        <a href="tel:+919870269006" class="cn-phone">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 98702 69006
+        </a>
+        <a href="tel:+919999991447" class="cn-phone">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 99999 91447
+        </a>
+      </div>
+    </div>
+
+    <!-- CAPACITY -->
+    <div class="cn-cell">
+      <div class="cn-label"><span class="cn-label-dot"></span>Venue Details</div>
+      <strong>Up to 2000 Guests</strong>
+      <div class="cn-badges">
+        <span class="cn-badge">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Indoor + Outdoor Options
+        </span>
+        <span class="cn-badge">
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          In-house Catering
+        </span>
+        <span class="cn-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Parking & Valet
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM MAP ROW -->
+  <div class="cn-bottom">
+    <div class="cn-address-line">
+      <div class="cn-pin-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="cn-addr-text">
+        <strong>NMBPL Stadium Lawn & Banquet</strong>
+        Sector 6, Block E, Rajajipuram, Lucknow, Uttar Pradesh
+      </div>
+    </div>
+    <a href="https://maps.google.com/?q=NMBPL+Stadium+Rajajipuram+Lucknow" class="cn-map-btn" target="_blank">
+      Open in Maps
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+  </div>
+
+</div>
+
+</div><!-- /page -->
+
+<script>
+const titles = ['Lush Green Lawn','Banquet Hall','End-to-End Event Support','In-house Catering','Music & DJ Setup','Attractive Lighting','Parking & Valet Facility'];
+const nums   = ['01','02','03','04','05','06','07'];
+const items  = document.querySelectorAll('.feat-item');
+const layers = document.querySelectorAll('.img-layer');
+const imgNum = document.getElementById('imgNum');
+const badge  = document.getElementById('imgBadgeTitle');
+let current  = 0;
+
+function activate(idx){
+  if(idx===current) return;
+  items[current].classList.remove('active');
+  layers[current].classList.remove('active');
+  current = idx;
+  items[current].classList.add('active');
+  layers[current].classList.add('active');
+  imgNum.textContent = nums[idx];
+  badge.textContent  = titles[idx];
+}
+
+/* Desktop: hover */
+items.forEach((item,i)=>item.addEventListener('mouseenter',()=>{
+  resetTimer();   // ← reset auto timer on hover
+  activate(i);
+}));
+
+/* Mobile: scroll-based IntersectionObserver */
+const mq = window.matchMedia('(max-width:860px)');
+if(mq.matches){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) activate(parseInt(e.target.dataset.idx));
+    });
+  },{threshold:0.5});
+  items.forEach(item=>obs.observe(item));
+}
+
+/* ── AUTO ADVANCE ── */
+let timer;
+const DELAY = 3000; // 3 seconds — change to 4000 for 4s etc.
+
+function autoNext(){
+  const next = (current + 1) % items.length;
+  activate(next);
+}
+
+function resetTimer(){
+  clearInterval(timer);
+  timer = setInterval(autoNext, DELAY);
+}
+
+// Start auto-advance
+resetTimer();
+
+// Pause on mouse enter the whole section, resume on leave
+const featOuter = document.querySelector('.feat-outer');
+if(featOuter){
+  featOuter.addEventListener('mouseenter', ()=> clearInterval(timer));
+  featOuter.addEventListener('mouseleave', ()=> resetTimer());
+}
+</script>
+
+<script>
+const carousel=document.getElementById('carousel');
+const dotsWrap=document.getElementById('dots');
+const cards=Array.from(document.querySelectorAll('.occ3-card'));
+const TOTAL=cards.length;
+const AUTO_MS=3500;
+let autoTimer=null,isUserScrolling=false,scrollEndTimer=null,currentIdx=1;
+
+cards.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='occ3-dot';d.dataset.idx=i;
+  dotsWrap.appendChild(d);
+});
+const dots=Array.from(dotsWrap.querySelectorAll('.occ3-dot'));
+
+function setScrollPadding(){
+  const pad=Math.max(20,(carousel.offsetWidth-cards[0].offsetWidth)/2);
+  carousel.style.paddingLeft=pad+'px';
+  carousel.style.paddingRight=pad+'px';
+}
+setScrollPadding();
+window.addEventListener('resize',()=>{setScrollPadding();scrollToCard(currentIdx,false);});
+
+function scrollToCard(idx,smooth=true){
+  idx=((idx%TOTAL)+TOTAL)%TOTAL;currentIdx=idx;
+  const card=cards[idx];
+  const target=carousel.scrollLeft+(card.getBoundingClientRect().left-carousel.getBoundingClientRect().left)-(carousel.offsetWidth/2)+(card.offsetWidth/2);
+  carousel.scrollTo({left:target,behavior:smooth?'smooth':'instant'});
+}
+
+function getActiveIdx(){
+  const center=carousel.scrollLeft+carousel.offsetWidth/2;
+  let best=0,minDist=Infinity;
+  cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-center);if(d<minDist){minDist=d;best=i;}});
+  return best;
+}
+
+function applyActive(idx){
+  currentIdx=idx;
+  cards.forEach((c,i)=>c.classList.toggle('is-active',i===idx));
+  dots.forEach((d,i)=>{
+    const was=d.classList.contains('active');
+    d.classList.toggle('active',i===idx);
+    if(i===idx&&!was){d.style.setProperty('--dur',AUTO_MS+'ms');void d.offsetWidth;}
+  });
+}
+
+function startAuto(){stopAuto();autoTimer=setInterval(()=>{if(!isUserScrolling)scrollToCard(currentIdx+1);},AUTO_MS);}
+function stopAuto(){clearInterval(autoTimer);}
+
+carousel.addEventListener('scroll',()=>{
+  isUserScrolling=true;clearTimeout(scrollEndTimer);
+  applyActive(getActiveIdx());
+  scrollEndTimer=setTimeout(()=>{isUserScrolling=false;scrollToCard(getActiveIdx());},150);
+},{passive:true});
+
+dots.forEach(d=>d.addEventListener('click',()=>{stopAuto();scrollToCard(+d.dataset.idx);startAuto();}));
+carousel.addEventListener('mouseenter',stopAuto);
+carousel.addEventListener('mouseleave',startAuto);
+carousel.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight')scrollToCard(currentIdx+1);
+  if(e.key==='ArrowLeft')scrollToCard(currentIdx-1);
+});
+
+setTimeout(()=>{setScrollPadding();scrollToCard(1,false);applyActive(1);startAuto();},100);
+</script>
+</body>
+</html>
