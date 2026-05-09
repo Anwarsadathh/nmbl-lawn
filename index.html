@@ -1810,7 +1810,394 @@ margin-top:clamp(16px,2vw,24px);
   </div>
 </section>
 
+<!-- ════════════════ GALLERY SECTION ════════════════ -->
+<style>
+.gallery2{padding-block:clamp(48px,7vw,96px)}
 
+.gallery2-header{text-align:center;margin-bottom:clamp(28px,4vw,52px)}
+.gallery2-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.64rem;letter-spacing:.34em;text-transform:uppercase;
+  color:#2e5c3a;font-weight:700;margin-bottom:14px;
+}
+.gallery2-label::before,.gallery2-label::after{content:'';width:32px;height:1px;background:#d4e6d8}
+.gallery2-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4.5vw,4.8rem);font-weight:900;
+  letter-spacing:-.05em;line-height:.88;text-transform:uppercase;color:#111;
+}
+.gallery2-title em{display:block;font-style:italic;font-weight:400;color:#2e5c3a;font-size:.7em;margin-top:6px}
+.gallery2-sub{font-size:clamp(.82rem,1.1vw,.95rem);color:#888;margin-top:14px;max-width:48ch;margin-inline:auto;line-height:1.75}
+
+/* TAB SWITCHER */
+.g2-tab-wrap{display:flex;justify-content:center;margin-bottom:clamp(24px,3.5vw,44px)}
+.g2-tabs{
+  display:inline-flex;align-items:center;
+  background:#fff;border:1.5px solid #e0ddd8;border-radius:999px;padding:5px;gap:4px;
+}
+.g2-tab{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:.55rem 1.5rem;border-radius:999px;
+  font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;border:none;background:transparent;color:#999;
+  transition:.28s ease;font-family:'DM Sans',sans-serif;
+}
+.g2-tab svg{flex-shrink:0;transition:.28s ease}
+.g2-tab.active{background:#2e5c3a;color:#fff;box-shadow:0 4px 18px rgba(46,92,58,.28)}
+.g2-tab:not(.active):hover{color:#2e5c3a;background:#d4e6d8}
+
+/* PANELS */
+.g2-panel{display:none}
+.g2-panel.active{display:block}
+
+/* ── IMAGES BENTO GRID ── */
+.g2-img-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:12px;
+}
+.g2-img-grid .gi:nth-child(1){grid-column:1/6;grid-row:1/3}
+.g2-img-grid .gi:nth-child(2){grid-column:6/9;grid-row:1/2}
+.g2-img-grid .gi:nth-child(3){grid-column:9/13;grid-row:1/2}
+.g2-img-grid .gi:nth-child(4){grid-column:6/10;grid-row:2/3}
+.g2-img-grid .gi:nth-child(5){grid-column:10/13;grid-row:2/3}
+.g2-img-grid .gi:nth-child(6){grid-column:1/5;grid-row:3/4}
+.g2-img-grid .gi:nth-child(7){grid-column:5/9;grid-row:3/4}
+.g2-img-grid .gi:nth-child(8){grid-column:9/13;grid-row:3/4}
+.g2-img-grid .gi.gi-extra{grid-column:span 3;min-height:clamp(160px,18vw,220px)!important}
+.g2-img-grid .gi.g2-hidden{display:none}
+
+.gi{
+  position:relative;overflow:hidden;border-radius:14px;
+  background:#d5d0cb;cursor:pointer;
+  min-height:clamp(140px,18vw,240px);
+}
+.gi:nth-child(1){min-height:clamp(300px,36vw,480px)}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:.55s cubic-bezier(.16,1,.3,1)}
+.gi:hover img{transform:scale(1.07)}
+
+/* subtle dark vignette on hover only */
+.gi::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(0,0,0,.18);
+  opacity:0;transition:.3s ease;border-radius:14px;
+}
+.gi:hover::after{opacity:1}
+
+/* expand icon only — no caption */
+.gi-expand{
+  position:absolute;top:12px;right:12px;z-index:2;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.25);
+  display:grid;place-items:center;
+  opacity:0;transform:scale(.8);transition:.3s ease;color:#fff;
+}
+.gi:hover .gi-expand{opacity:1;transform:scale(1)}
+
+/* ── VIDEOS GRID ── */
+.g2-vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gv{
+  position:relative;border-radius:16px;overflow:hidden;
+  background:#111;cursor:pointer;aspect-ratio:16/9;
+}
+.gv.g2-hidden{display:none}
+.gv-feat{grid-column:1/3;aspect-ratio:16/8}
+.gv-thumb{position:absolute;inset:0;background-size:cover;background-position:center;transition:.45s ease}
+.gv:hover .gv-thumb{transform:scale(1.05)}
+.gv::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(0,0,0,.15),rgba(0,0,0,.55));
+  transition:.3s ease;
+}
+.gv:hover::after{background:linear-gradient(160deg,rgba(0,0,0,.08),rgba(0,0,0,.42))}
+
+/* play button only — no tag/title/duration */
+.gv-play{position:absolute;inset:0;z-index:2;display:grid;place-items:center}
+.gv-play-btn{
+  width:clamp(48px,6vw,62px);height:clamp(48px,6vw,62px);
+  border-radius:50%;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(14px);
+  border:2px solid rgba(255,255,255,.3);
+  display:grid;place-items:center;transition:.28s ease;
+}
+.gv:hover .gv-play-btn{
+  background:#2e5c3a;border-color:#2e5c3a;
+  transform:scale(1.12);
+  box-shadow:0 0 0 14px rgba(46,92,58,.15);
+}
+.gv-play-btn svg{fill:#fff;margin-left:3px;width:clamp(16px,2.2vw,22px);height:clamp(16px,2.2vw,22px)}
+
+/* ── LOAD MORE BUTTON ── */
+.g2-loadmore-wrap{
+  display:flex;justify-content:center;
+  margin-top:clamp(24px,3.5vw,40px);
+}
+.g2-loadmore-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:.8rem 2.2rem;border-radius:999px;
+  border:1.5px solid #2e5c3a;background:transparent;
+  color:#2e5c3a;font-size:.8rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:.28s ease;
+}
+.g2-loadmore-btn:hover{background:#2e5c3a;color:#fff;box-shadow:0 8px 28px rgba(46,92,58,.22)}
+.g2-loadmore-btn svg{transition:.28s ease;stroke:#2e5c3a}
+.g2-loadmore-btn:hover svg{stroke:#fff}
+.g2-loadmore-btn:disabled{opacity:.3;cursor:not-allowed;pointer-events:none}
+
+/* fade-in for new items */
+@keyframes g2FadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.gi.g2-animate,.gv.g2-animate{animation:g2FadeUp .42s cubic-bezier(.16,1,.3,1) forwards}
+
+/* LIGHTBOX */
+.g2-lightbox{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.93);backdrop-filter:blur(20px);
+  display:none;place-items:center;padding:20px;
+}
+.g2-lightbox.open{display:grid}
+.g2-lb-inner{position:relative;max-width:min(960px,94vw);animation:lbIn .3s cubic-bezier(.16,1,.3,1)}
+@keyframes lbIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.g2-lb-inner img{width:100%;border-radius:14px;max-height:86vh;object-fit:contain;display:block}
+.g2-lb-close{
+  position:absolute;top:-14px;right:-14px;
+  width:38px;height:38px;border-radius:50%;
+  background:#fff;border:none;cursor:pointer;
+  display:grid;place-items:center;
+  font-size:1rem;font-weight:900;color:#111;
+  box-shadow:0 4px 18px rgba(0,0,0,.4);transition:.2s ease;z-index:2;
+}
+.g2-lb-close:hover{background:#2e5c3a;color:#fff}
+
+/* MOBILE */
+@media(max-width:860px){
+  .g2-img-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .g2-img-grid .gi:nth-child(1){grid-column:1/-1;grid-row:1/2;min-height:clamp(220px,50vw,300px)}
+  .g2-img-grid .gi:nth-child(2){grid-column:1/2;grid-row:2/3}
+  .g2-img-grid .gi:nth-child(3){grid-column:2/3;grid-row:2/3}
+  .g2-img-grid .gi:nth-child(4){grid-column:1/2;grid-row:3/4}
+  .g2-img-grid .gi:nth-child(5){grid-column:2/3;grid-row:3/4}
+  .g2-img-grid .gi:nth-child(6){grid-column:1/2;grid-row:4/5}
+  .g2-img-grid .gi:nth-child(7){grid-column:2/3;grid-row:4/5}
+  .g2-img-grid .gi:nth-child(8){grid-column:1/-1;grid-row:5/6}
+  .g2-img-grid .gi.gi-extra{grid-column:span 1}
+  .g2-vid-grid{grid-template-columns:1fr}
+  .gv-feat{grid-column:1/2}
+}
+@media(max-width:520px){
+  .g2-tab{padding:.45rem 1rem;font-size:.68rem}
+}
+</style>
+
+<!-- ══ SECTION ══ -->
+<section class="gallery2" id="gallery" style="width:min(100%,1320px);margin-inline:auto;padding-inline:clamp(18px,3vw,48px)">
+
+  <div class="gallery2-header">
+    <div class="gallery2-label">Our Gallery</div>
+    <h2 class="gallery2-title">MOMENTS &amp; <em>Memories</em></h2>
+    <p class="gallery2-sub">A glimpse of the events, spaces, and celebrations that have brought countless families together.</p>
+  </div>
+
+  <div class="g2-tab-wrap">
+    <div class="g2-tabs">
+      <button class="g2-tab active" onclick="g2Switch('images',this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Photos
+      </button>
+      <button class="g2-tab" onclick="g2Switch('videos',this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+        Videos
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ PHOTOS ══ -->
+  <div class="g2-panel active" id="g2-images">
+    <div class="g2-img-grid" id="g2ImgGrid">
+
+      <!-- First 8 — bento layout, always visible -->
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_1.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_2.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_3.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_4.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_5.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_6.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_7.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_8.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- Extra photos — hidden, revealed by Load More. Keep adding as many as needed -->
+      <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_9.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_10.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_11.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+        <img src="YOUR_IMAGE_12.jpg" alt="" loading="lazy">
+        <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <!-- Continue pattern for IMAGE_13 … IMAGE_N -->
+
+    </div>
+
+    <div class="g2-loadmore-wrap">
+      <button class="g2-loadmore-btn" id="g2ImgLoadBtn" onclick="g2LoadMore('img')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Load More
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ VIDEOS ══ -->
+  <div class="g2-panel" id="g2-videos">
+    <div class="g2-vid-grid" id="g2VidGrid">
+
+      <!-- First 4 visible -->
+      <div class="gv gv-feat">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_1.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <div class="gv">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_2.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <div class="gv">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_3.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <div class="gv">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_4.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <!-- Extra videos — hidden. Keep adding as many as needed -->
+      <div class="gv g2-hidden">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_5.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <div class="gv g2-hidden">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_6.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <div class="gv g2-hidden">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_7.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <div class="gv g2-hidden">
+        <div class="gv-thumb" style="background-image:url('YOUR_VIDEO_THUMB_8.jpg')"></div>
+        <div class="gv-play"><div class="gv-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>
+
+      <!-- Continue pattern for THUMB_9 … THUMB_N -->
+
+    </div>
+
+    <div class="g2-loadmore-wrap">
+      <button class="g2-loadmore-btn" id="g2VidLoadBtn" onclick="g2LoadMore('vid')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Load More
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="g2-lightbox" id="g2Lb" onclick="if(event.target===this)g2CloseLb()">
+  <div class="g2-lb-inner">
+    <button class="g2-lb-close" onclick="g2CloseLb()">✕</button>
+    <img id="g2LbImg" src="" alt="">
+  </div>
+</div>
+
+<script>
+function g2Switch(tab, btn) {
+  document.querySelectorAll('.g2-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.g2-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('g2-' + tab).classList.add('active');
+}
+
+function g2LoadMore(type) {
+  const gridId = type === 'img' ? 'g2ImgGrid' : 'g2VidGrid';
+  const btnId  = type === 'img' ? 'g2ImgLoadBtn' : 'g2VidLoadBtn';
+  const grid   = document.getElementById(gridId);
+  const hidden = [...grid.querySelectorAll('.g2-hidden')];
+  const batch  = hidden.slice(0, 4);
+
+  batch.forEach((el, i) => {
+    el.classList.remove('g2-hidden');
+    el.classList.add('g2-animate');
+    el.style.animationDelay = (i * 80) + 'ms';
+    el.addEventListener('animationend', () => el.classList.remove('g2-animate'), { once: true });
+  });
+
+  if (grid.querySelectorAll('.g2-hidden').length === 0) {
+    const btn = document.getElementById(btnId);
+    btn.disabled = true;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> All Loaded`;
+  }
+}
+
+function g2Lightbox(el) {
+  document.getElementById('g2LbImg').src = el.querySelector('img').src;
+  document.getElementById('g2Lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function g2CloseLb() {
+  document.getElementById('g2Lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') g2CloseLb(); });
+</script>
 
 <div class="contact-new">
   <div class="cn-bg-num">NMBPL</div>
@@ -2009,6 +2396,7 @@ carousel.addEventListener('keydown',e=>{
 });
 
 setTimeout(()=>{setScrollPadding();scrollToCard(1,false);applyActive(1);startAuto();},100);
+
 </script>
 </body>
 </html>
