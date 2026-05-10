@@ -590,7 +590,7 @@ background:#0d0d0d; /* already correct — if still red, add: */
 
 .feat-main-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,3.8vw,4.2rem);
+ font-size: clamp(2.4rem, 4.5vw, 5rem);
   font-weight:900;
   letter-spacing:-.04em;
   line-height:.92;
@@ -798,8 +798,13 @@ background:#0d0d0d; /* already correct — if still red, add: */
 .gallery-sec{padding-block:clamp(40px,6vw,80px)}
 .gallery-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px}
 .gallery-title .small-label{font-family:'Playfair Display',serif;font-style:italic;font-size:.82rem;letter-spacing:.18em;color:var(--green);margin-bottom:8px;display:block}
-.gallery-title .big{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,4rem);font-weight:900;letter-spacing:-.04em;line-height:.92;text-transform:uppercase;display:flex;align-items:center;gap:14px}
-.gallery-title .big svg{color:var(--green);flex-shrink:0}
+.gallery-title .big{
+  font-family:'Playfair Display',serif;
+  font-size: clamp(2.4rem, 4.5vw, 5rem);
+  font-weight:900;letter-spacing:-.06em;
+  line-height:.86;text-transform:uppercase;
+  color:#111;display:block;
+}
 .gallery-title .sub{font-size:.82rem;color:#999;margin-top:8px;font-style:italic}
 .fan-gallery{display:flex;align-items:center;overflow:hidden;height:clamp(300px,40vw,540px);border-radius:var(--radius-xl);background:#e0ddd8}
 .fan-item{flex:1;height:100%;overflow:hidden;position:relative;transition:flex .5s cubic-bezier(.16,1,.3,1);cursor:pointer;min-width:0}
@@ -828,7 +833,7 @@ background:#0d0d0d; /* already correct — if still red, add: */
 }
 .why-head h2{
   font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3.8vw,4rem);
+font-size: clamp(2.4rem, 4.5vw, 5rem);
   font-weight:900;
   letter-spacing:-.04em;
   line-height:.92;
@@ -1676,12 +1681,11 @@ margin-top:clamp(16px,2vw,24px);
 <section class="gallery-sec" id="gallery">
   <div class="gallery-head">
     <div class="gallery-title">
-      <span class="small-label">Gallery</span>
-      <div class="big">
-        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22v-7"/><path d="M7.5 15.5a6 6 0 0 1 9 0"/><path d="M4.5 10.5a9 9 0 0 1 15 0"/><path d="M2 6a12 12 0 0 1 20 0"/></svg>
-        OF OUR &nbsp;<em style="font-style:italic;font-weight:400">VENUE</em>
-      </div>
-      <div class="sub">Sip, relax, and explore our venue spaces, décor styles, and event settings</div>
+     <span class="small-label">Gallery</span>
+<div class="big">
+  OF OUR &nbsp;<em style="font-style:italic;font-weight:400;color:var(--green)">VENUE</em>
+</div>
+<div class="sub">Explore our spaces, décor styles, and event settings</div>
     </div>
     <a href="tel:+919870269006" class="btn-outline">Book Venue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
@@ -1823,7 +1827,7 @@ margin-top:clamp(16px,2vw,24px);
 .gallery2-label::before,.gallery2-label::after{content:'';width:32px;height:1px;background:#d4e6d8}
 .gallery2-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,4.5vw,4.8rem);font-weight:900;
+  font-size: clamp(2.4rem, 4.5vw, 5rem);font-weight:900;
   letter-spacing:-.05em;line-height:.88;text-transform:uppercase;color:#111;
 }
 .gallery2-title em{display:block;font-style:italic;font-weight:400;color:#2e5c3a;font-size:.7em;margin-top:6px}
