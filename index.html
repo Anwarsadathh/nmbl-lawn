@@ -181,13 +181,36 @@ background:#0d0d0d; /* already correct — if still red, add: */
 /* Heading */
 .hr-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,3.8vw,4.8rem);
+  font-size:clamp(1.6rem,2.8vw,3.2rem);
   font-weight:900;
   letter-spacing:-.06em;
-  line-height:.82;
+  line-height:1;
   text-transform:uppercase;
   color:#fff;
   margin:0 0 20px;
+}
+.hr-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(.6rem, .85vw, .75rem);
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  margin-top: -12px;       /* pulls it close under the title */
+  margin-bottom: 18px;
+  padding: .3rem .85rem;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(8px);
+}
+
+.hr-subtitle span {
+  color: #7ec888;
+  font-size: .9em;
 }
 .hr-title em{
   font-style:italic;
@@ -464,18 +487,25 @@ background:#0d0d0d; /* already correct — if still red, add: */
 .intro-tags{
   display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;
 }
-.intro-tags span{
-  padding:.28rem .78rem;
-  border-radius:999px;
-  border:1.5px solid #c8dbc9;
-  background:#fff;
-  font-size:.62rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--green);
-  font-weight:700;
-  transition:.2s ease;
+.intro-tags span {
+  border-radius: 999px;
+ padding: .30rem .85rem;   /* smaller padding */
+  font-size: .64rem;        /* smaller text */
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: .2s ease;
+  border: 1.5px solid transparent;
 }
+
+/* Light shade colors */
+.intro-tags span:nth-child(1) { background: #d4e6d8; border-color: #a8cdb0; color: #2e5c3a; }  /* Weddings - light green */
+.intro-tags span:nth-child(2) { background: #fde8d8; border-color: #f5c4a0; color: #b05e2a; }  /* Receptions - light orange */
+.intro-tags span:nth-child(3) { background: #d6e8f7; border-color: #a0c4e8; color: #1e4d7b; }  /* Corporate - light blue */
+.intro-tags span:nth-child(4) { background: #ecdff5; border-color: #d0b0e8; color: #7b3f9e; }  /* Birthdays - light purple */
+.intro-tags span:nth-child(5) { background: #fdebd6; border-color: #e8c49a; color: #a0522d; }  /* Cultural - light peach */
+
+.intro-tags span:hover { opacity: .85; transform: translateY(-2px); }
 .intro-tags span:hover{background:var(--green-pale)}
 
 /* ornament divider */
@@ -543,24 +573,46 @@ background:#0d0d0d; /* already correct — if still red, add: */
 
 /* SPACIOUS LAWN */
 .spacious{padding-block:clamp(40px,6vw,80px)}
-.spacious-grid {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: clamp(20px, 3vw, 40px);
-  align-items: stretch;
-  margin-top: 0;   /* ← removed the extra top gap */
-}
+.spacious-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,3vw,40px);align-items:stretch;margin-top:0}
 .spacious-img{border-radius:var(--radius-xl);overflow:hidden;min-height:clamp(300px,40vw,520px)}
 .spacious-img img{width:100%;height:100%;object-fit:cover}
 .spacious-copy{background:#fff;border-radius:var(--radius-xl);padding:clamp(22px,3.5vw,40px);display:flex;flex-direction:column;justify-content:center;gap:18px;border:1px solid var(--border)}
 .spacious-copy h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:.92;text-transform:uppercase}
 .spacious-copy h2 em{display:block;font-style:italic;font-weight:400;color:var(--green)}
-.spacious-copy .capacity{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,6rem);font-weight:900;color:var(--green);line-height:.9;letter-spacing:-.06em}
-.spacious-copy .capacity small{display:block;font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#999;margin-top:8px;font-weight:500}
+.spacious-copy .capacity{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.2rem);font-weight:900;color:var(--green);line-height:1;letter-spacing:-.04em;display:flex;flex-direction:column;gap:6px}
+.spacious-copy .capacity small{display:block;font-family:'DM Sans',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#999;margin-top:15px;font-weight:500;white-space:nowrap}
 .spacious-copy p{font-size:clamp(.84rem,1.1vw,.95rem);color:#666;line-height:1.8}
-.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.fit-pill{padding:.55rem .9rem;border-radius:10px;background:#f5f4f1;border:1px solid var(--border);font-size:.78rem;font-weight:600;color:var(--text)}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.fit-pill{position:relative;padding:.65rem 1rem;border-radius:12px;background:#fff;border:1.5px solid #c8dbc9;font-size:.75rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;overflow:hidden;transition:all .3s cubic-bezier(.16,1,.3,1);cursor:default;opacity:0;transform:translateY(12px);animation:pillIn .5s cubic-bezier(.16,1,.3,1) forwards}
+.fit-pill::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--green),#7ec888);border-radius:3px 0 0 3px;transform:scaleY(0);transform-origin:bottom;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.fit-pill::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;opacity:.5;transition:.3s ease}
+.fit-pill:hover{background:#f0f7f1;border-color:var(--green);color:var(--green);transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,92,58,.12)}
+.fit-pill:hover::before{transform:scaleY(1)}
+.fit-pill:hover::after{opacity:1;background:#7ec888;box-shadow:0 0 6px rgba(126,200,136,.8)}
+.fit-pill:nth-child(1){animation-delay:.1s}
+.fit-pill:nth-child(2){animation-delay:.2s}
+.fit-pill:nth-child(3){animation-delay:.3s}
+.fit-pill:nth-child(4){animation-delay:.4s}
+.fit-pill:nth-child(5){animation-delay:.5s}
+.fit-pill:nth-child(6){animation-delay:.6s}
+@keyframes pillIn{to{opacity:1;transform:translateY(0)}}
 
+/* ↓ ADD THESE AT THE END ↓ */
+@media(max-width:860px){
+  .spacious-copy .capacity small{font-size:.58rem;letter-spacing:.12em}
+    .spacious-copy h2{
+    line-height: 1.15;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
+}
+@media(max-width:480px){
+  .spacious-copy .capacity small{font-size:.52rem;letter-spacing:.08em}
+    /* ADD THIS */
+  .spacious-copy h2{
+    line-height: 1.2;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+}
 /* ═══════════════════════════════════════
    SECTION HEADER — centered above split
 ═══════════════════════════════════════ */
@@ -599,7 +651,7 @@ background:#0d0d0d; /* already correct — if still red, add: */
  font-size: clamp(2.4rem, 4.5vw, 5rem);
   font-weight:900;
   letter-spacing:-.04em;
-  line-height:.92;
+line-height:1;
   text-transform:uppercase;
   color:#fff;
   margin-bottom:14px;
@@ -1219,9 +1271,13 @@ margin-top:clamp(16px,2vw,24px);
 .occ3-card-title{
   font-family:'Playfair Display',serif;
   font-size:clamp(.88rem,1.3vw,1.05rem);
-  font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.15;margin-bottom:4px;
+  font-weight:700;letter-spacing:-.02em;color:#7ec888;line-height:1.15;margin-bottom:4px;
   text-shadow:0 2px 12px rgba(0,0,0,.5);
+  padding-bottom: 6px;
+  border-bottom: 2px solid;
 }
+
+
 .occ3-card-desc{font-size:clamp(.64rem,.8vw,.74rem);color:rgba(255,255,255,0);line-height:1.65;max-height:0;overflow:hidden;transition:.45s cubic-bezier(.16,1,.3,1)}
 .occ3-card.is-active .occ3-card-desc{max-height:80px;color:rgba(255,255,255,.85)}
 
@@ -1233,6 +1289,7 @@ margin-top:clamp(16px,2vw,24px);
   color:#fff;font-weight:700;opacity:0;transform:translateY(-4px);transition:.3s ease;
 }
 .occ3-card.is-active .occ3-card-tag{opacity:1;transform:translateY(0)}
+
 
 /* ── DOTS ── */
 .occ3-dots{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0 12px;flex-shrink:0;position:relative;z-index:15}
@@ -1320,11 +1377,18 @@ margin-top:clamp(16px,2vw,24px);
 
   <!-- RIGHT: Dark content panel -->
   <div class="hero-right">
-    <div class="hero-right-inner">
+   <div class="hero-right-inner">
+<div style="position:absolute;top:clamp(16px,2.5vw,28px);right:clamp(16px,2.5vw,28px);z-index:4;">
+  <img src="https://replsports.com/wp-content/uploads/2026/05/NMBPL-Stadium-Logo-296x300.png" alt="NMBPL Stadium Logo"
+    style="height:clamp(55px,7vw,80px);width:auto;object-fit:contain;opacity:.9;">
+</div>
 
-      <h1 class="hr-title">
-        LAWN<br>&amp;<br><em>BANQUET</em>
-      </h1>
+   <h1 class="hr-title">
+  CELEBRATION<br><em>ARENA</em>
+</h1>
+<div class="hr-subtitle">
+  LAWN <span>&amp;</span> BANQUET
+</div>
 
      <p class="hr-tag">
   <em>Where Celebrations Turn<br>Into Grand Memories</em>
@@ -1427,7 +1491,7 @@ margin-top:clamp(16px,2vw,24px);
       <div class="intro-copy">
         <p>At <strong>NMBPL Stadium Lawn & Banquet</strong>, every celebration is designed to feel special, elegant, and effortless. With large open lawns, refined banquet facilities, and complete event support, we offer an ideal venue for hosting memorable gatherings of every scale.</p>
         <p>Whether you are planning an intimate family function or a large social event, our venue combines big space, flexibility, and professional management to create an experience your guests will remember for years.</p>
-        <p>Located in the heart of Rajajipuram, we offer <strong>in-house catering</strong> with a wide range of menu options, music system on request, elegant lighting and decoration, and an experienced team for seamless event execution. Both <strong>indoor and outdoor</strong> event venue options are available.</p>
+       <p>Located in the heart of Rajajipuram, <strong>NMBPL Stadium Lawn &amp; Banquet</strong> provides easy accessibility along with a premium event environment that suits <strong>weddings, receptions, corporate gatherings,</strong> and private celebrations alike. We offer <strong>in-house catering</strong> with wide range of menu options, music system on request, and elegant lighting and decoration. There are both <strong>indoor and outdoor</strong> event venue options available with experienced team of seamless event execution.</p>
         <div class="intro-tags">
           <span>Weddings</span>
           <span>Receptions</span>
@@ -1564,7 +1628,7 @@ margin-top:clamp(16px,2vw,24px);
     </div>
     <div class="spacious-copy">
       <div>
-        <div class="capacity">2000<small>Guests comfortably accommodated</small></div>
+        <div class="capacity">Upto 2000<small>Guests comfortably accommodated</small></div>
       </div>
       <h2>Spacious Lawn &<br><em>Elegant Event Setup</em></h2>
       <p>The open lawn at NMBPL Stadium offers a fresh and welcoming atmosphere that creates a stunning backdrop for day and evening celebrations. Our spacious layout comfortably accommodates both medium-sized and large gatherings, making it ideal for events where comfort and movement are equally important.</p>
