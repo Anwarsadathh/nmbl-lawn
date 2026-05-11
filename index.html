@@ -2318,14 +2318,18 @@ items.forEach((item,i)=>item.addEventListener('mouseenter',()=>{
 }));
 
 /* Mobile: scroll-based IntersectionObserver */
+// Mobile scroll-based IntersectionObserver — fixed
 const mq = window.matchMedia('(max-width:860px)');
-if(mq.matches){
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) activate(parseInt(e.target.dataset.idx));
+if (mq.matches) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) activate(parseInt(e.target.dataset.idx));
     });
-  },{threshold:0.5});
-  items.forEach(item=>obs.observe(item));
+  }, {
+    threshold: 0,                        // trigger as soon as ANY part is visible
+    rootMargin: '-30% 0px -50% 0px'     // fires when card enters middle zone of screen
+  });
+  items.forEach(item => obs.observe(item));
 }
 
 /* ── AUTO ADVANCE ── */
