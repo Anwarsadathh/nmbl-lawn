@@ -2406,10 +2406,24 @@ function stopAuto(){clearInterval(autoTimer);}
 carousel.addEventListener('scroll',()=>{
   isUserScrolling=true;clearTimeout(scrollEndTimer);
   applyActive(getActiveIdx());
-  scrollEndTimer=setTimeout(()=>{isUserScrolling=false;scrollToCard(getActiveIdx());},150);
+  scrollEndTimer = setTimeout(() => {
+  isUserScrolling = false;
+  const idx = getActiveIdx();
+  scrollToCard(idx);
+  applyActive(idx);   // ← ADD THIS LINE
+}, 150);
 },{passive:true});
 
 dots.forEach(d=>d.addEventListener('click',()=>{stopAuto();scrollToCard(+d.dataset.idx);startAuto();}));
+// ADD THIS — make cards clickable to become active
+cards.forEach((card, i) => {
+  card.addEventListener('click', () => {
+    stopAuto();
+    scrollToCard(i);
+    applyActive(i);
+    startAuto();
+  });
+});
 carousel.addEventListener('mouseenter',stopAuto);
 carousel.addEventListener('mouseleave',startAuto);
 carousel.addEventListener('keydown',e=>{
