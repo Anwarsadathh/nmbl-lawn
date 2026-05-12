@@ -377,9 +377,15 @@ background:#0d0d0d; /* already correct — if still red, add: */
 .hero-ticker-wrap:hover .hero-ticker{
   animation-play-state:paused;
 }
+.logo-mobile { display: none; }
 
-/* ── Mobile ── */
 @media(max-width:860px){
+   .logo-mobile { display: block; }
+  .logo-desktop { display: none; }
+  .hero-right-inner{
+    position: static;        /* ← ADD THIS ONE LINE */
+    padding:32px 24px;
+  }
   .hero{
     flex-direction:column;
     height:auto;
@@ -394,9 +400,6 @@ background:#0d0d0d; /* already correct — if still red, add: */
   .hero-right{
     flex:none;
     width:100%;
-  }
-  .hero-right-inner{
-    padding:32px 24px;
   }
   .hr-title{
     font-size:clamp(2.4rem,10vw,4rem);
@@ -744,7 +747,7 @@ line-height:1;
 
 .feat-item{
   display:grid;
-  grid-template-columns:clamp(44px,5vw,64px) 1fr auto;
+  grid-template-columns:1fr auto;
   align-items:center;gap:0;
   padding:0 clamp(18px,3vw,36px);
   border-bottom:1px solid rgba(255,255,255,.06);
@@ -764,13 +767,13 @@ line-height:1;
   font-family:'Playfair Display',serif;
   font-size:clamp(1.4rem,2vw,2.2rem);font-weight:900;
   color:rgba(255,255,255,.07);letter-spacing:-.04em;
-  padding:clamp(12px,1.8vw,18px) 0;
+   padding:clamp(12px,1.8vw,18px) 0;
   transition:.35s ease;user-select:none;
 }
 .feat-item:hover .fi-num,.feat-item.active .fi-num{color:rgba(126,200,136,.28)}
 
 .fi-main{
-  padding:clamp(12px,1.8vw,18px) clamp(12px,1.6vw,20px);
+   padding:clamp(10px,1.4vw,14px) clamp(12px,1.6vw,20px);
   border-left:1px solid rgba(255,255,255,.05);
   transition:.35s ease;height:100%;
   display:flex;flex-direction:column;justify-content:center;
@@ -839,8 +842,8 @@ line-height:1;
   .img-num{ font-size:clamp(3rem,12vw,5rem); top:12px; right:12px; }
  .img-badge{ top:auto; bottom:12px; left:12px; padding:8px 12px; max-width:180px; }
   .img-badge-title{ font-size:.8rem; }
-  .feat-item{ grid-template-columns:40px 1fr auto; padding:0 clamp(14px,4vw,20px); }
-  .fi-num{ font-size:clamp(1.3rem,5vw,1.8rem); padding:clamp(14px,3.5vw,20px) 0; }
+ .feat-item{ grid-template-columns:1fr auto; padding:0 clamp(14px,4vw,20px); }
+ .fi-num{ font-size:clamp(1.3rem,5vw,1.8rem); padding:clamp(14px,3.5vw,20px) 0; }
   .fi-main{ padding:clamp(14px,3.5vw,20px) clamp(10px,2.5vw,16px); }
   .fi-title{ font-size:clamp(.9rem,4vw,1.1rem); }
   .fi-desc{ max-height:none!important; color:rgba(255,255,255,.42)!important; }
@@ -848,7 +851,7 @@ line-height:1;
 }
 
 @media(max-width:480px){
-  .feat-item{ grid-template-columns:36px 1fr; }
+.feat-item{ grid-template-columns:1fr; }
   .fi-arrow{ display:none; }
   .feat-left{ height:58vw; max-height:260px; }
 }
@@ -936,6 +939,10 @@ font-size: clamp(2.4rem, 4.5vw, 5rem);
 
 .sdot{width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,#3d8050,#2a5435);border:2px solid rgba(126,200,136,.3);box-shadow:0 0 0 8px rgba(46,92,58,.12),0 8px 22px rgba(0,0,0,.5);display:grid;place-items:center;margin:auto;position:relative;z-index:3}
 .sdot span{color:#fff;font-weight:900;font-size:.82rem;letter-spacing:.03em}
+.sdot[style*="#f5c400"] span,
+.mdot[style*="#f5c400"] span {
+  color: #333;
+}
 
 /* CARD */
 .scard{
@@ -1033,7 +1040,7 @@ margin-top:clamp(16px,2vw,24px);
   margin-bottom:6px;
 }
 .cn-cell p{
-  font-size:clamp(.76rem,.88vw,.84rem);
+  font-size:clamp(.88rem,1.1vw,1rem);
   color:rgba(255,255,255,.4);
   line-height:1.75;
 }
@@ -1060,7 +1067,7 @@ margin-top:clamp(16px,2vw,24px);
 .cn-badges{display:flex;flex-direction:column;gap:8px;margin-top:4px}
 .cn-badge{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:.74rem;color:rgba(255,255,255,.48);font-weight:500;
+ font-size:.82rem;color:rgba(255,255,255,.48);font-weight:500;
 }
 .cn-badge svg{
   width:13px;height:13px;
@@ -1119,6 +1126,20 @@ margin-top:clamp(16px,2vw,24px);
 }
 @media(max-width:480px){
   .cn-phone{font-size:.82rem}
+}
+
+/* ← ADD HERE */
+@media(min-width:1024px){
+   .cn-addr-text strong{
+    font-size:1.05rem;
+  }
+  .cn-addr-text{
+    font-size:1rem;
+  }
+  .cn-map-btn{
+    font-size:.82rem;
+    padding:.7rem 1.4rem;
+  }
 }
 
 /* BTN OUTLINE */
@@ -1344,13 +1365,18 @@ margin-top:clamp(16px,2vw,24px);
 
   <!-- LEFT: Full bleed photo -->
   <div class="hero-left">
+    <div class="logo-mobile" style="position:absolute;bottom:clamp(12px,2vw,20px);right:clamp(12px,2vw,20px);z-index:5;">
+    <img src="https://replsports.com/wp-content/uploads/2026/05/NMBPL-Stadium-Logo-296x300.png" alt="NMBPL Stadium Logo"
+      style="height:clamp(48px,8vw,64px);width:auto;object-fit:contain;opacity:.9;">
+  </div>
+
     <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/9faa4fefd2ec57c60b2219d864c40a3fc8a41c3f.jpg" alt="NMBPL Stadium Lawn & Banquet">
     <div class="hero-left-overlay"></div>
 
     <!-- Floating badge top-left -->
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      NMBPL STADIUM &nbsp;·&nbsp; RAJAJIPURAM
+      NMBPL STADIUM &nbsp;·&nbsp; RAJAJIPURAM, LUCKNOW
     </div>
 
     <!-- Floating stat chips bottom-left -->
@@ -1361,8 +1387,11 @@ margin-top:clamp(16px,2vw,24px);
       </div>
       <div class="hstat-div"></div>
       <div class="hstat">
-        <div class="hstat-num">2000<span>+</span></div>
-        <div class="hstat-label">Capacity</div>
+<div class="hstat-num">
+<div class="hstat-label">Upto</div>
+  2000
+</div>
+<div class="hstat-label">Capacity</div>
       </div>
       <div class="hstat-div"></div>
       <div class="hstat">
@@ -1378,13 +1407,13 @@ margin-top:clamp(16px,2vw,24px);
   <!-- RIGHT: Dark content panel -->
   <div class="hero-right">
    <div class="hero-right-inner">
-<div style="position:absolute;top:clamp(16px,2.5vw,28px);right:clamp(16px,2.5vw,28px);z-index:4;">
+<div class="logo-desktop" style="position:absolute;top:clamp(16px,2.5vw,28px);right:clamp(16px,2.5vw,28px);z-index:4;">
   <img src="https://replsports.com/wp-content/uploads/2026/05/NMBPL-Stadium-Logo-296x300.png" alt="NMBPL Stadium Logo"
     style="height:clamp(55px,7vw,80px);width:auto;object-fit:contain;opacity:.9;">
 </div>
 
-   <h1 class="hr-title">
-  CELEBRATION<br><em>ARENA</em>
+<h1 class="hr-title">
+  CELEBRATION <em style="display:inline;font-style:italic;font-weight:400;color:#7ec888;">ARENA</em>
 </h1>
 <div class="hr-subtitle">
   LAWN <span>&amp;</span> BANQUET
@@ -1686,7 +1715,6 @@ margin-top:clamp(16px,2vw,24px);
     <div class="feat-list" id="featList">
 
       <div class="feat-item active" data-idx="0">
-        <div class="fi-num">01</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/></svg></div>
           <div class="fi-title">Lush Green Lawn</div>
@@ -1696,7 +1724,6 @@ margin-top:clamp(16px,2vw,24px);
       </div>
 
       <div class="feat-item" data-idx="1">
-        <div class="fi-num">02</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/></svg></div>
           <div class="fi-title">Banquet Hall</div>
@@ -1706,7 +1733,6 @@ margin-top:clamp(16px,2vw,24px);
       </div>
 
       <div class="feat-item" data-idx="2">
-        <div class="fi-num">03</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M2 12h4M18 12h4"/></svg></div>
           <div class="fi-title">End-to-End Event Support</div>
@@ -1716,7 +1742,6 @@ margin-top:clamp(16px,2vw,24px);
       </div>
 
       <div class="feat-item" data-idx="3">
-        <div class="fi-num">04</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3v18"/><path d="M17 3v18"/><path d="M3 8h18"/><path d="M3 16h18"/></svg></div>
           <div class="fi-title">In-house Catering</div>
@@ -1726,7 +1751,6 @@ margin-top:clamp(16px,2vw,24px);
       </div>
 
       <div class="feat-item" data-idx="4">
-        <div class="fi-num">05</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
           <div class="fi-title">Music & DJ Setup</div>
@@ -1736,7 +1760,6 @@ margin-top:clamp(16px,2vw,24px);
       </div>
 
       <div class="feat-item" data-idx="5">
-        <div class="fi-num">06</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M5 5l4.2 4.2M19 5l-4.2 4.2M2 12h6M22 12h-6"/></svg></div>
           <div class="fi-title">Attractive Lighting</div>
@@ -1746,7 +1769,6 @@ margin-top:clamp(16px,2vw,24px);
       </div>
 
       <div class="feat-item" data-idx="6">
-        <div class="fi-num">07</div>
         <div class="fi-main">
           <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M9 8h6M9 16h4"/></svg></div>
           <div class="fi-title">Parking & Valet Facility</div>
@@ -1760,7 +1782,7 @@ margin-top:clamp(16px,2vw,24px);
 
 </div><!-- /feat-outer -->
 <!-- ════════════════ GALLERY ════════════════ -->
-<section class="gallery-sec" id="gallery">
+<section class="gallery-sec" id="gallery-fan">
   <div class="gallery-head">
     <div class="gallery-title">
      <span class="small-label">Gallery</span>
@@ -1798,19 +1820,19 @@ margin-top:clamp(16px,2vw,24px);
       <!-- 01 LEFT -->
       <div class="scard L">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg')"></div>
-        <div class="ccontent"><span class="num">01</span><h3>Large Open Venue Area</h3><p>Spacious open grounds that comfortably accommodate every scale of celebration.</p></div>
+        <div class="ccontent"><h3>Large Open Venue Area</h3><p>Spacious open grounds that comfortably accommodate every scale of celebration.</p></div>
       </div>
-      <div class="sdot"><span>01</span></div>
+       <div class="sdot" style="background:linear-gradient(145deg,#1a6fc4,#1458a0)"><span>✦</span></div>
       <div class="sblank"></div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M450 0 C450 38,760 38,760 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
 
       <!-- 02 RIGHT -->
       <div class="sblank"></div>
-      <div class="sdot"><span>02</span></div>
+      <div class="sdot" style="background:linear-gradient(145deg,#e8231a,#c01a12)"><span>✦</span></div>
       <div class="scard R">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/81f228e9334906d9fd2b861f33653d917097781e.jpg')"></div>
-        <div class="ccontent"><span class="num">02</span><h3>Affordable Event Planning Flexibility</h3><p>Built to support different event sizes, setups, and budgets without compromising quality.</p></div>
+        <div class="ccontent"><h3>Affordable Event Planning Flexibility</h3><p>Built to support different event sizes, setups, and budgets without compromising quality.</p></div>
       </div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M760 0 C760 38,140 38,140 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
@@ -1818,19 +1840,19 @@ margin-top:clamp(16px,2vw,24px);
       <!-- 03 LEFT -->
       <div class="scard L">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg')"></div>
-        <div class="ccontent"><span class="num">03</span><h3>Easy Accessibility in Lucknow</h3><p>Conveniently located in Rajajipuram — easily reachable for guests from all parts of the city.</p></div>
+        <div class="ccontent"><h3>Easy Accessibility in Lucknow</h3><p>Conveniently located in Rajajipuram — easily reachable for guests from all parts of the city.</p></div>
       </div>
-      <div class="sdot"><span>03</span></div>
+     <div class="sdot" style="background:linear-gradient(145deg,#2e9e3a,#247a2e)"><span>✦</span></div>
       <div class="sblank"></div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M450 0 C450 38,760 38,760 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
 
       <!-- 04 RIGHT -->
       <div class="sblank"></div>
-      <div class="sdot"><span>04</span></div>
+      <div class="sdot" style="background:linear-gradient(145deg,#f5c400,#d4a800)"><span>✦</span></div>
       <div class="scard R">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg')"></div>
-        <div class="ccontent"><span class="num">04</span><h3>Experienced Event Handling Team</h3><p>Dependable, professional team ensuring smooth management and flawless execution throughout your event.</p></div>
+        <div class="ccontent"><h3>Experienced Event Handling Team</h3><p>Dependable, professional team ensuring smooth management and flawless execution throughout your event.</p></div>
       </div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M760 0 C760 38,140 38,140 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
@@ -1838,19 +1860,19 @@ margin-top:clamp(16px,2vw,24px);
       <!-- 05 LEFT -->
       <div class="scard L">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6c715e71450c0de3c740ff4024355ccb3070e6c8.jpg')"></div>
-        <div class="ccontent"><span class="num">05</span><h3>Smooth Guest Movement</h3><p>Thoughtfully designed layout for free and comfortable movement between seating, stage, and entertainment zones.</p></div>
+        <div class="ccontent"><h3>Smooth Guest Movement</h3><p>Thoughtfully designed layout for free and comfortable movement between seating, stage, and entertainment zones.</p></div>
       </div>
-      <div class="sdot"><span>05</span></div>
+      <div class="sdot" style="background:linear-gradient(145deg,#1a6fc4,#1458a0)"><span>✦</span></div>
       <div class="sblank"></div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M450 0 C450 38,760 38,760 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
 
       <!-- 06 RIGHT -->
       <div class="sblank"></div>
-      <div class="sdot"><span>06</span></div>
+       <div class="sdot" style="background:linear-gradient(145deg,#e8231a,#c01a12)"><span>✦</span></div>
       <div class="scard R">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7fdc4911604eab50b3521ffa244c8559b3033d11.jpg')"></div>
-        <div class="ccontent"><span class="num">06</span><h3>Organized Service Support</h3><p>Every service element professionally coordinated from arrival to departure — smooth and stress-free for hosts and guests.</p></div>
+        <div class="ccontent"><h3>Organized Service Support</h3><p>Every service element professionally coordinated from arrival to departure — smooth and stress-free for hosts and guests.</p></div>
       </div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M760 0 C760 38,140 38,140 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
@@ -1858,34 +1880,41 @@ margin-top:clamp(16px,2vw,24px);
       <!-- 07 LEFT -->
       <div class="scard L">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/a7f03faf1fb3fa8da710eb3522420684e8b8283d.jpg')"></div>
-        <div class="ccontent"><span class="num">07</span><h3>Clean and Spacious Surroundings</h3><p>A well-maintained, polished environment offering ample space, fresh surroundings and a welcoming atmosphere.</p></div>
+        <div class="ccontent"><h3>Clean and Spacious Surroundings</h3><p>A well-maintained, polished environment offering ample space, fresh surroundings and a welcoming atmosphere.</p></div>
       </div>
-      <div class="sdot"><span>07</span></div>
+       <div class="sdot" style="background:linear-gradient(145deg,#2e9e3a,#247a2e)"><span>✦</span></div>
       <div class="sblank"></div>
 
       <div class="sarc"><svg viewBox="0 0 900 76" height="76" fill="none"><path d="M450 0 C450 38,760 38,760 76" stroke="#4a8c5c" stroke-width="2.2" stroke-dasharray="9 6" opacity=".6"/></svg></div>
 
       <!-- 08 RIGHT -->
       <div class="sblank"></div>
-      <div class="sdot"><span>08</span></div>
+      <div class="sdot" style="background:linear-gradient(145deg,#f5c400,#d4a800)"><span>✦</span></div>
       <div class="scard R">
         <div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/25f00c893fd2a0a51e25b6826f432caff2c0efdc.jpg')"></div>
-        <div class="ccontent"><span class="num">08</span><h3>Well-Connected and Easy to Locate</h3><p>Situated at NMBPL Stadium, Sector 6, Block E, Rajajipuram — easy for guests from all directions in Lucknow.</p></div>
+        <div class="ccontent"><h3>Well-Connected and Easy to Locate</h3><p>Situated at NMBPL Stadium, Sector 6, Block E, Rajajipuram — easy for guests from all directions in Lucknow.</p></div>
       </div>
 
     </div><!-- /dsk -->
 
     <!-- ═══ MOBILE ═══ -->
-    <div class="mob">
-      <div class="mrow"><div class="mdot"><span>01</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg')"></div><div class="ccontent"><span class="num">01</span><h3>Large Open Venue Area</h3><p>Spacious open grounds accommodating every scale of celebration — from intimate family functions to grand social gatherings.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>02</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/81f228e9334906d9fd2b861f33653d917097781e.jpg')"></div><div class="ccontent"><span class="num">02</span><h3>Affordable Event Planning Flexibility</h3><p>Built to support different event sizes, setups, and budgets without compromising on quality or comfort.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>03</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg')"></div><div class="ccontent"><span class="num">03</span><h3>Easy Accessibility in Lucknow</h3><p>Conveniently located in Rajajipuram, Lucknow — easily reachable for guests from all parts of the city.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>04</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg')"></div><div class="ccontent"><span class="num">04</span><h3>Experienced Event Handling Team</h3><p>Dependable professional team ensuring smooth management and flawless execution throughout your event.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>05</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6c715e71450c0de3c740ff4024355ccb3070e6c8.jpg')"></div><div class="ccontent"><span class="num">05</span><h3>Smooth Guest Movement</h3><p>Thoughtfully designed layout for free and comfortable movement between seating, stage, food counters, and entertainment zones.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>06</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7fdc4911604eab50b3521ffa244c8559b3033d11.jpg')"></div><div class="ccontent"><span class="num">06</span><h3>Organized Service Support</h3><p>Every service element professionally coordinated from arrival to departure for a smooth, stress-free event.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>07</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/a7f03faf1fb3fa8da710eb3522420684e8b8283d.jpg')"></div><div class="ccontent"><span class="num">07</span><h3>Clean and Spacious Surroundings</h3><p>A well-maintained, polished environment offering ample space, fresh surroundings, and a welcoming atmosphere.</p></div></div></div>
-      <div class="mrow"><div class="mdot"><span>08</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/25f00c893fd2a0a51e25b6826f432caff2c0efdc.jpg')"></div><div class="ccontent"><span class="num">08</span><h3>Well-Connected and Easy to Locate</h3><p>Situated at NMBPL Stadium, Sector 6, Block E, Rajajipuram — easy for guests from all directions in Lucknow.</p></div></div></div>
-    </div>
+ <div class="mob">
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#1a6fc4,#1458a0)"><span>✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cf26b9fbc0a878fe019a3ebe6db634dc131ff881.jpg')"></div><div class="ccontent"><h3>Large Open Venue Area</h3><p>Spacious open grounds accommodating every scale of celebration — from intimate family functions to grand social gatherings.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#e8231a,#c01a12)"><span>✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/81f228e9334906d9fd2b861f33653d917097781e.jpg')"></div><div class="ccontent"><h3>Affordable Event Planning Flexibility</h3><p>Built to support different event sizes, setups, and budgets without compromising on quality or comfort.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#2e9e3a,#247a2e)"><span>✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/059d1585d555566dc5bce7cc3fc07ce04e2585d7.jpg')"></div><div class="ccontent"><h3>Easy Accessibility in Lucknow</h3><p>Conveniently located in Rajajipuram, Lucknow — easily reachable for guests from all parts of the city.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#f5c400,#d4a800)"><span style="color:#333">✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/260f79e42ba974eb64ced06ff0a712fdaf3440d1.jpg')"></div><div class="ccontent"><h3>Experienced Event Handling Team</h3><p>Dependable professional team ensuring smooth management and flawless execution throughout your event.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#1a6fc4,#1458a0)"><span>✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6c715e71450c0de3c740ff4024355ccb3070e6c8.jpg')"></div><div class="ccontent"><h3>Smooth Guest Movement</h3><p>Thoughtfully designed layout for free and comfortable movement between seating, stage, food counters, and entertainment zones.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#e8231a,#c01a12)"><span>✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7fdc4911604eab50b3521ffa244c8559b3033d11.jpg')"></div><div class="ccontent"><h3>Organized Service Support</h3><p>Every service element professionally coordinated from arrival to departure for a smooth, stress-free event.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#2e9e3a,#247a2e)"><span>✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/a7f03faf1fb3fa8da710eb3522420684e8b8283d.jpg')"></div><div class="ccontent"><h3>Clean and Spacious Surroundings</h3><p>A well-maintained, polished environment offering ample space, fresh surroundings, and a welcoming atmosphere.</p></div></div></div>
+
+  <div class="mrow"><div class="mdot" style="background:linear-gradient(145deg,#f5c400,#d4a800)"><span style="color:#333">✦</span></div><div class="mcard"><div class="cbg" style="background-image:url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/25f00c893fd2a0a51e25b6826f432caff2c0efdc.jpg')"></div><div class="ccontent"><h3>Well-Connected and Easy to Locate</h3><p>Situated at NMBPL Stadium, Sector 6, Block E, Rajajipuram — easy for guests from all directions in Lucknow.</p></div></div></div>
+</div>
 
     <!-- BOTTOM -->
     <div class="btm">
@@ -2305,10 +2334,14 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') g2CloseLb();
           <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           +91 98702 69006
         </a>
-        <a href="tel:+919999991447" class="cn-phone">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          +91 99999 91447
-        </a>
+       <a href="tel:+919999991447" class="cn-phone">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  +91 99999 91447
+</a>
+<a href="mailto:info@replsports.com" class="cn-phone">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#7ec888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+  info@replsports.com
+</a>
       </div>
     </div>
 
