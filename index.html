@@ -1291,7 +1291,7 @@ margin-top:clamp(16px,2vw,24px);
 .occ3-card-num{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(126,200,136,.9);font-weight:800;margin-bottom:4px}
 .occ3-card-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(.88rem,1.3vw,1.05rem);
+  font-size:clamp(1.05rem,1.6vw,1.35rem);
   font-weight:700;letter-spacing:-.02em;color:#7ec888;line-height:1.15;margin-bottom:4px;
   text-shadow:0 2px 12px rgba(0,0,0,.5);
   padding-bottom: 6px;
@@ -1355,6 +1355,25 @@ margin-top:clamp(16px,2vw,24px);
   .occ3-card{width:clamp(158px,60vw,200px);height:clamp(230px,60vw,290px)}
   .occ3-btn strong{font-size:.84rem}
   .occ3-right::before,.occ3-right::after{width:22px}
+}
+.occ3-nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.92);
+  border:1.5px solid #d4e6d8;
+  color:#2e5c3a;font-size:1.1rem;cursor:pointer;
+  display:grid;place-items:center;
+  transition:.22s ease;
+  z-index:20;
+  box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+.occ3-nav-btn:hover{background:#2e5c3a;color:#fff;border-color:#2e5c3a;}
+.occ3-nav-prev{left:12px;}
+.occ3-nav-next{right:12px;}
+
+@media(max-width:860px){
+  .occ3-nav-prev{left:6px;}
+  .occ3-nav-next{right:6px;}
 }
 </style>
 </head>
@@ -1587,60 +1606,65 @@ margin-top:clamp(16px,2vw,24px);
 
     <!-- RIGHT CAROUSEL -->
     <div class="occ3-right">
+       <!-- ADD THESE TWO BUTTONS -->
+ <button class="occ3-nav-btn occ3-nav-prev" id="occ3Prev" onclick="occ3NavPrev()">&#8592;</button>
+  <button class="occ3-nav-btn occ3-nav-next" id="occ3Next" onclick="occ3NavNext()">&#8594;</button>
+
+
       <div class="occ3-track-wrap" id="carousel">
 
         <div class="occ3-card" data-idx="0">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80')"></div>
           <span class="occ3-card-tag">Weddings</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">01</p><h3 class="occ3-card-title">Weddings</h3><p class="occ3-card-desc">A perfect backdrop for your most cherished celebration, with flexible décor and seating.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Weddings</h3><p class="occ3-card-desc">A perfect backdrop for your most cherished celebration, with flexible décor and seating.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="1">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80')"></div>
           <span class="occ3-card-tag">Receptions</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">02</p><h3 class="occ3-card-title">Receptions</h3><p class="occ3-card-desc">Elegant reception spaces designed to welcome guests in style with spacious lawn setup.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Receptions</h3><p class="occ3-card-desc">Elegant reception spaces designed to welcome guests in style with spacious lawn setup.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="2">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=600&q=80')"></div>
           <span class="occ3-card-tag">Engagement</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">03</p><h3 class="occ3-card-title">Engagement Ceremonies</h3><p class="occ3-card-desc">Intimate, romantic settings to celebrate the beginning of forever together.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Engagement Ceremonies</h3><p class="occ3-card-desc">Intimate, romantic settings to celebrate the beginning of forever together.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="3">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=600&q=80')"></div>
           <span class="occ3-card-tag">Anniversary</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">04</p><h3 class="occ3-card-title">Anniversary Celebrations</h3><p class="occ3-card-desc">Mark milestones of love in a venue that matches the grandeur of your journey.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Anniversary Celebrations</h3><p class="occ3-card-desc">Mark milestones of love in a venue that matches the grandeur of your journey.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="4">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80')"></div>
           <span class="occ3-card-tag">Birthday</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">05</p><h3 class="occ3-card-title">Birthday Parties</h3><p class="occ3-card-desc">From intimate gatherings to grand celebrations — every birthday deserves a memorable setting.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Birthday Parties</h3><p class="occ3-card-desc">From intimate gatherings to grand celebrations — every birthday deserves a memorable setting.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="5">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80')"></div>
           <span class="occ3-card-tag">Social</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">06</p><h3 class="occ3-card-title">Social Gatherings</h3><p class="occ3-card-desc">Spacious grounds that bring people together for joyful community moments.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Social Gatherings</h3><p class="occ3-card-desc">Spacious grounds that bring people together for joyful community moments.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="6">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80')"></div>
           <span class="occ3-card-tag">Cultural</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">07</p><h3 class="occ3-card-title">Cultural Events</h3><p class="occ3-card-desc">Rich traditions celebrated in a space that honours culture, colour, and community.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Cultural Events</h3><p class="occ3-card-desc">Rich traditions celebrated in a space that honours culture, colour, and community.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="7">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80')"></div>
           <span class="occ3-card-tag">Corporate</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">08</p><h3 class="occ3-card-title">Corporate Functions</h3><p class="occ3-card-desc">Professional event setups with flexible configurations for teams, launches, and conferences.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Corporate Functions</h3><p class="occ3-card-desc">Professional event setups with flexible configurations for teams, launches, and conferences.</p></div>
         </div>
 
         <div class="occ3-card" data-idx="8">
           <div class="occ3-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80')"></div>
           <span class="occ3-card-tag">Community</span>
-          <div class="occ3-card-content"><p class="occ3-card-num">09</p><h3 class="occ3-card-title">Community Programs</h3><p class="occ3-card-desc">Open, welcoming venue for community-driven programs, cultural meets, and local events.</p></div>
+          <div class="occ3-card-content"><h3 class="occ3-card-title">Community Programs</h3><p class="occ3-card-desc">Open, welcoming venue for community-driven programs, cultural meets, and local events.</p></div>
         </div>
 
       </div>
@@ -1695,7 +1719,7 @@ margin-top:clamp(16px,2vw,24px);
   <div class="feat-left" id="featLeft">
 <div class="img-layer active" data-idx="0" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00891.JPG')"></div>
 <div class="img-layer" data-idx="1" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9488.JPG')"></div>
-<div class="img-layer" data-idx="2" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9469.JPG')"></div>
+<div class="img-layer" data-idx="2" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00884.JPG')"></div>
 <div class="img-layer" data-idx="3" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9462.JPG')"></div>
 <div class="img-layer" data-idx="4" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9460.JPG')"></div>
 <div class="img-layer" data-idx="5" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9472.JPG')"></div>
@@ -1839,7 +1863,7 @@ margin-top:clamp(16px,2vw,24px);
 
       <!-- 03 LEFT -->
       <div class="scard L">
-        <div class="cbg" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00882.JPG')"></div>
+        <div class="cbg" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00898.JPG')"></div>
         <div class="ccontent"><h3>Easy Accessibility in Lucknow</h3><p>Conveniently located in Rajajipuram — easily reachable for guests from all parts of the city.</p></div>
       </div>
      <div class="sdot" style="background:linear-gradient(145deg,#2e9e3a,#247a2e)"><span>✦</span></div>
@@ -1851,7 +1875,7 @@ margin-top:clamp(16px,2vw,24px);
       <div class="sblank"></div>
       <div class="sdot" style="background:linear-gradient(145deg,#f5c400,#d4a800)"><span>✦</span></div>
       <div class="scard R">
-        <div class="cbg" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9469.JPG')"></div>
+        <div class="cbg" style="background-image:url('https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00884.JPG')"></div>
         <div class="ccontent"><h3>Experienced Event Handling Team</h3><p>Dependable, professional team ensuring smooth management and flawless execution throughout your event.</p></div>
       </div>
 
@@ -2188,7 +2212,7 @@ margin-top:clamp(16px,2vw,24px);
   </div>
 
   <div class="gi" onclick="g2Lightbox(this)">
-    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9469.JPG" alt="Couple at event" loading="lazy">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00884.JPG" alt="Couple at event" loading="lazy">
     <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
 
@@ -2244,7 +2268,54 @@ margin-top:clamp(16px,2vw,24px);
   </div>
 
       <!-- Continue pattern for IMAGE_13 … IMAGE_N -->
+<div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00898.JPG" alt="Stadium exterior" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
 
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00902.JPG" alt="Stadium grounds view" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00905.JPG" alt="Venue surroundings" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00907.JPG" alt="Stadium architecture" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00910.JPG" alt="Venue entrance" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/DSC00911.JPG" alt="Venue pathway" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9481.JPG" alt="Event decoration setup" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9466.JPG" alt="Venue floral arrangement" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC94572.JPG" alt="Decorated stage view" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
+
+  <div class="gi gi-extra g2-hidden" onclick="g2Lightbox(this)">
+    <img src="https://replsports.com/replsports/assets/assets/images/nmbl-lawn/_DSC9456.JPG" alt="Event seating arrangement" loading="lazy">
+    <div class="gi-expand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+  </div>
     </div>
 
     <div class="g2-loadmore-wrap">
@@ -2651,6 +2722,21 @@ function closeModal() {
   const m = document.getElementById('bookModal');
   m.style.display = 'none';
   document.body.style.overflow = '';
+}
+
+function occ3NavPrev(){
+  const idx = ((currentIdx - 1) + TOTAL) % TOTAL;
+  stopAuto();
+  scrollToCard(idx);
+  applyActive(idx);
+  startAuto();
+}
+function occ3NavNext(){
+  const idx = (currentIdx + 1) % TOTAL;
+  stopAuto();
+  scrollToCard(idx);
+  applyActive(idx);
+  startAuto();
 }
 </script>
 </body>
